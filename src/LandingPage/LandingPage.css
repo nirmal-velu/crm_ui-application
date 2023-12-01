@@ -1,0 +1,422 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat+Alternates:wght@500&family=Poppins:wght@400;600&family=Roboto+Flex:opsz,wght@8..144,200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@700&family=Inter&family=Montserrat+Alternates:wght@500&family=Poppins:wght@400;600&family=Roboto+Flex:opsz,wght@8..144,200&display=swap');
+
+body {
+    height: 100%;
+}
+
+#container-div {
+    /* background-color: #36256E; */
+    background: linear-gradient(to bottom, #36256E 50%, #FFF 50%);
+
+}
+
+.ins-log-div {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin: auto;
+}
+
+
+.insurance-img {
+    width: 37.29px;
+    height: 68px;
+    padding-top: 10%;
+}
+
+.insurance-div {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.insurance-txt {
+
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.login-div {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.login-img {
+    width: 14.6px;
+    height: 24px;
+    cursor: pointer;
+
+}
+
+.login-txt {
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.total-container-div {
+    width: 510px;
+    margin: auto;
+}
+
+.ins-cont-div {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: flex-start;
+    /* width: 40%; */
+    margin: auto;
+}
+
+#ins-content {
+    color: #FFF;
+    font-family: IBM Plex Sans;
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 60px;
+    margin-top: 40px;
+    margin-bottom: 0px;
+    /* 142.857% */
+}
+
+#sub-content {
+    color: #FFF;
+    /* font-family: IBM Plex Sans; */
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: 60px;
+}
+
+
+.all-insurance-logos {
+    display: flex;
+    justify-content: center;
+    /* position: absolute;
+    z-index: 1; */
+    /* width: 100%; */
+    margin-top: 30px;
+    bottom: 45%;
+    gap: 38px;
+}
+
+/* #car-img {
+    width: 70px;
+    height: 70px;
+} */
+
+.logos {
+    background-color: #FFFFFF;
+    fill: #FFF;
+    filter: drop-shadow(0px 10px 40px rgba(54, 37, 110, 0.25));
+    width: 70px;
+    height: 70px;
+    /* margin: 0 19px 0; */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.logos-health {
+    background-color: #FFFFFF;
+    filter: drop-shadow(0px 10px 30px rgba(231, 52, 147, 0.25));
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.img-logos {
+    margin: auto;
+    overflow: auto;
+}
+
+.logos-text-div {
+    /* display: flex;
+    justify-content: space-around;
+    width: 35%;
+    margin: auto; */
+    text-align: center;
+    margin-top: 10px;
+    color: #36256E;
+}
+
+.quote-div {
+
+    text-align: center;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-top: 40px;
+
+}
+
+#quote-btn {
+    width: 213px;
+    height: 45px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #FFF;
+    border-color: #E73493;
+    background: #E73493;
+    box-shadow: 0px 10px 30px 0px rgba(231, 52, 147, 0.25);
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+
+    color: #36256E;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+/* 1601-desktop
+1201-1600-laptop
+tab& ipad-481-1200
+mobile 319-480 */
+/* @media screen and (min-width:768px ),(max-height: 601px) {
+  .all-insurance-logos {
+      margin-top: 20px; 
+  }
+} */
+
+/* ---------------------------------------------------Login Page-------------------------------------------------------- */
+
+#login-container-id {
+    display: flex;
+}
+
+.left-container {
+    width: 35%;
+    height: 100vh;
+}
+
+.login-page-div {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 80%;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.login-border {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.login-page-border {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+#login-page-txt {
+    color: #36256E;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 36px;
+    /* 150% */
+}
+
+.input-field-div {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    width: 80%;
+}
+
+.email-id-input {
+    border-radius: 4px;
+    height: 40px;
+    background: #EDF2F7;
+    text-indent: 10px;
+    color: #87909E;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    /* 200% */
+}
+
+#email-label {
+    color: #4A5568;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    /* 200% */
+}
+
+.password-label {
+    margin-top: 30px;
+    color: #4A5568;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    /* 200% */
+}
+
+#password-input {
+    border-radius: 4px;
+    height: 40px;
+    background: #EDF2F7;
+    text-indent: 10px;
+    color: #87909E;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    /* 200% */
+}
+
+#login-btn {
+    color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    margin-top: 40px;
+    border-radius: 8px;
+    background: #E73493;
+    height: 40px;
+    flex-shrink: 0;
+    line-height: 21px;
+    /* 150% */
+    text-transform: uppercase;
+}
+
+.footer-div {
+    display: flex;
+    justify-content: center;
+}
+
+.footer-login-div {
+    width: 60%;
+}
+
+.Register-div {
+    display: flex;
+    margin-top: 50px;
+}
+
+#register-account-txt {
+    color: #87909E;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    /* 150% */
+}
+
+#register-txt {
+    color: #E73493;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"] {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+.forgot-pass-div {
+    display: flex;
+    justify-content: center;
+}
+
+#forgot-pass-txt {
+    color: #87909E;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    /* 150% */
+
+}
+
+/* -----------------------------------------login page right side-------------------------------------------------------- */
+
+.right-container {
+    width: 65%;
+    height: 100vh;
+    background-color: #36256E;
+}
+
+.login-content-div {
+    display: flex;
+    justify-content: center;
+    margin-top: 145px;
+}
+
+.align-content-div {
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.phone-img-div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#phone-img {
+    width: 62%;
+    height: 200px;
+    margin-top: 8%;
+}
+/* ------------------------------------insurance coverage--------------- */
+
+/* #img-ins{
+    fill: #FFF;
+    filter: drop-shadow(rgba );
+} */
