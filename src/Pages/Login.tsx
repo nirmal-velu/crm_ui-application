@@ -24,6 +24,8 @@ const Login: React.FC<Props> = () => {
 
     const [inputType, setInputType] = useState<any>('text')
     const [inputValue, setInputValue] = useState<string>('')
+    
+    const navigate = useNavigate();
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
@@ -65,6 +67,11 @@ const Login: React.FC<Props> = () => {
         const pass = e.target.value;
         setPassword(pass)
     }
+
+    const redirectToRegisterPage = () => {
+        navigate('/register'); // Use navigate to go to the register page
+      };
+
     const handleSubmit = (e: FormEvent): void => {
         e.preventDefault();
        
@@ -150,7 +157,7 @@ const Login: React.FC<Props> = () => {
                     <footer className='footer-div'>
                         <div className='footer-login-div'>
                             <div className='Register-div'>
-                                <p id='register-account-txt'>Don’t have an account?</p><span id='register-txt'> Register</span>
+                                <p id='register-account-txt'>Don’t have an account?</p><span onClick={redirectToRegisterPage} id='register-txt'> Register</span>
                             </div>
                             <div className='forgot-pass-div'>
                                 <p id='forgot-pass-txt'>Forgot Password ?</p>
