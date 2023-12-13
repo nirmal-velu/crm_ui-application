@@ -19,13 +19,11 @@ function App() {
         <Route path='/forgot-password' element={<ForgotPassword/>}/>
         <Route path='/insurancecoverage' element={<InsuranceCoverage/>}/>
 
-        
-        
-      </Routes>
-    </Router>
-    
-    {/* <Login/> */}
-    {/* <InsuranceCoverage/> */}
+        </Routes>
+      </Router>
+
+      {/* <Login/> */}
+      {/* <InsuranceCoverage/> */}
     </>
   );
 }
