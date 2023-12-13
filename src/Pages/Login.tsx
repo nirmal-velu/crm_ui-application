@@ -88,7 +88,7 @@ const Login: React.FC<Props> = () => {
                 "email": emailId,
                 "password": password
             }
-            const response = axios.post(apiBaseUrl + "register/login", body)
+            const response = axios.post(apiBaseUrl + "/register/login", body)
 
             setError(false);
         } else if (inputType == "number") {
@@ -96,7 +96,7 @@ const Login: React.FC<Props> = () => {
                 "phoneNumber": phoneNo,
                 "password": password
             }
-            const response = axios.post(apiBaseUrl + "register/login", data)
+            const response = axios.post(apiBaseUrl + "/register/login", data)
 
             console.log("submit called")
             setError(false)
