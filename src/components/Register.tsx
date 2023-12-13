@@ -19,6 +19,8 @@ function Register() {
 
     const [Error, setError] = useState<Partial<typeof initvalues>>({})
 
+    const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+
 
     const [result, setResult] = useState('')
 
@@ -85,7 +87,7 @@ function Register() {
             if (!Object.keys(validationError).length) {
                 setError({})
                 console.log("no error form added")
-                const response = await axios.post('http://localhost:8081/api/register/register', details);
+                const response = await axios.post( apiBaseUrl + 'register/register', details);
                 console.log(response.data.message);
                 setResult(response.data.message);
                 console.log("added");

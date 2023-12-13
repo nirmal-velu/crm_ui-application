@@ -4,25 +4,20 @@ import '../LandingPage/LandingPage.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-// import { validateEmail } from '../Validation/EmailValidate'
-// import { validatePhone } from '../Validation/PhoneValidate';
-// import phoneimg from '../assets/phone-girl.png';
 import mobileimg from '../assets/mobileLogo.svg'
-import axios from 'axios';
+import AuthService from '../service/authservice';
 
 
 
 
 interface Props { }
 
-const Login: React.FC<Props> = () => {
+const ForgotPassword: React.FC<Props> = () => {
     const [emailId, setEmailId] = useState<any>('');
     const [phoneNo, setPhoneNo] = useState<string>()
-    const [password, setPassword] = useState<string>('');
+    // const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<boolean>(false)
-    // const [isValidEmail, setIsValidEmail] = useState<boolean>(true);
-    // const [invalidUser, setInvalidUser] = useState<boolean>(false);
-    // const [isPhoneValid, setIsPhoneValid] = useState<boolean>(true);
+
 
     const [inputType, setInputType] = useState<any>('text')
     const [inputValue, setInputValue] = useState<string>('')
@@ -58,45 +53,42 @@ const Login: React.FC<Props> = () => {
     };
 
 
-    // const isEmailValid = validateEmail(input);
-    // console.log('email ',isEmailValid)
-    // const isPhoneValid = validatePhone(input);
-    // setIsValidEmail(isEmailValid || (isPhoneValid && !isNaN(Number(input))));
-    // Check if the value is a number or a valid email
-
-
-
 
     const handlePassword = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const pass = e.target.value;
-        setPassword(pass)
+        //setPassword(pass)
     }
 
-    const redirectToRegisterPage = () => {
-        navigate('/register'); // Use navigate to go to the register page
-      };
 
-      const setForgotPasswordVisible = () => {
-        navigate('/forgot-password'); // Use navigate to go to the register page
-      };
-
-    const handleSubmit = (e: FormEvent): void => {
+    const handleSubmit = async (e: FormEvent): Promise<void> => {
         e.preventDefault();
        
         if (inputType == "email") {
             const body = {
                 "email": emailId,
-                "password": password
+                //"newPassword": password
             }
-            const response = axios.post(apiBaseUrl + "register/login", body)
+            //const response = axios.post(apiBaseUrl + "register/generate-otp", body)
+
+            const response = await AuthService.generateOtp(body);
 
             setError(false);
         } else if (inputType == "number") {
             const data = {
                 "phoneNumber": phoneNo,
-                "password": password
+               // "newPassword": password
             }
-            const response = axios.post(apiBaseUrl + "register/login", data)
+            //const response = axios.post(apiBaseUrl + "register/generate-otp", data)
+
+            const response = await AuthService.generateOtp(data);
+
+            console.log("testing", response)
+
+            if (response.statusCode === 200) {
+                navigate('/register'); // Use navigate to go to the register page OTP SCREEN
+              } else {
+                setError(true);
+              }
 
             console.log("submit called")
             setError(false)
@@ -117,7 +109,7 @@ const Login: React.FC<Props> = () => {
 
                         <div className='login-border'>
                             <div className='login-page-border'>
-                                <h2 id='login-page-txt'>Login to your account</h2>
+                                <h2 id='login-page-txt'>Forgot-Password</h2>
                             </div>
                             <div className='input-field-div'>
                                 <label id='email-label'>Email or Phone Number</label>
@@ -153,26 +145,15 @@ const Login: React.FC<Props> = () => {
                                         placeholder='Email or Phone Number' />
                                 )}
 
-                                <label className='password-label'>Password</label>
-                                <input type='password' id='password-input' placeholder='Password' value={password} onChange={handlePassword} />
+                                {/* <label className='password-label'>Enter New Password</label>
+                                <input type='password' id='password-input' placeholder='Password' value={password} onChange={handlePassword} /> */}
                                 {/* <div className='btn-div'> */}
                                 {error ? <span>error</span> : <span></span>}
-                                <button type='submit' id='login-btn'>Login</button>
-                                {/* </div> */}
+                                <button type='submit' id='login-btn'>Change Password</button>
+                                 {/* </div> */}
                             </div>
                         </div>
                     </form>
-                    <footer className='footer-div'>
-                        <div className='footer-login-div'>
-                            <div className='Register-div'>
-                                <p id='register-account-txt'>Don’t have an account?</p><span onClick={redirectToRegisterPage} id='register-txt'> Register</span>
-                            </div>
-                            <div className='forgot-pass-div'>
-                                {/* <p id='forgot-pass-txt'>Forgot Password ? <span onClick={setForgotPasswordVisible}></span> </p> */}
-                                <span onClick={setForgotPasswordVisible} id='forgot-pass-txt'>Forgot Password ? </span>
-                            </div>
-                        </div>
-                    </footer>
 
                 </div>
 
@@ -195,5 +176,5 @@ const Login: React.FC<Props> = () => {
     )
 }
 
-export default Login
+export default ForgotPassword
 

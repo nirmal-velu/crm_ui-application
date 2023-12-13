@@ -6,6 +6,7 @@ import Login from './Pages/Login';
 import InsuranceCoverage from './Pages/InsuranceCoverage';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Register from './components/Register';
+import ForgotPassword from './Pages/ForgotPassword';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/' element={<LandingPage/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
+        <Route path='/forgot-password' element={<ForgotPassword/>}/>
         <Route path='/insurancecoverage' element={<InsuranceCoverage/>}/>
 
         
