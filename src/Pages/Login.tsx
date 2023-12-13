@@ -43,7 +43,7 @@ const Login: React.FC<Props> = () => {
             const email = value.toLowerCase();
             setInputType('email');
             setEmailId(email);
-        } else if (/^\d+$/.test(value)) {
+        } else if  (/^\d+$/.test(value)) {
             // const number=value.slice(0,20);
             console.log("number")
             setPhoneNo(value);
@@ -52,8 +52,8 @@ const Login: React.FC<Props> = () => {
         }
         else {
             console.log("text")
-            setInputType('text');
-            setInputValue(value);
+            // setInputType('text');
+            // setInputValue(value);
         }
     };
 
