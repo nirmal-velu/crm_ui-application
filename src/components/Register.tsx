@@ -87,7 +87,7 @@ function Register() {
             if (!Object.keys(validationError).length) {
                 setError({})
                 console.log("no error form added")
-                const response = await axios.post( apiBaseUrl + 'register/register', details);
+                const response = await axios.post(apiBaseUrl + 'register/register', details);
                 console.log(response.data.message);
                 setResult(response.data.message);
                 console.log("added");
@@ -111,130 +111,141 @@ function Register() {
 
 
     return (
-        // <div className='register-screen'>
-        <div className='container1'>
-            <div className='first-section'>
-                <div className='header'>
-                    <img src='Group.svg' width="38" height="45"></img>
-                    <h1>Insurance Company</h1>
+        <div className='register-screen'>
+            <div className='container1'>
+                <div className='first-section'>
+                    <div className='header'>
+                        <img src='Group.svg' width="38" height="45"></img>
+                        <h1>Insurance Company</h1>
+                    </div>
+                    <div className='form'>
+                        <form onSubmit={handlesubmit}>
+                            <div className='title'><b>Create  a  Secure  Account</b></div>
+                            <div className='subtitle'>Welcome to the future of insurance</div>
+                            <div className='inputfield1'>
+                                <label>Full Name </label>
+                                <br></br>
+                                <input className='input'
+                                    placeholder='Full Name'
+                                    name="fullName"
+                                    value={details.fullName}
+                                    onChange={handlechange}
+                                    type='text'
+                                    id='f1'
+                                    onKeyDown={(e) => {
+                                        if (!/[a-zA-Z]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') {
+                                            e.preventDefault();
+                                        }
+                                        if (e.key == 'Enter') {
+                                            e.preventDefault();
+                                            const nf = document.getElementById('f2')
+                                            nf?.focus();
+                                        }
+                                    }}
+                                    maxLength={20}>
+                                </input>
+                            </div>
+                            <p>{Error.fullName ? <span>{Error.fullName}</span> : ""}</p>
+                            <div className='inputfield1'>
+                                <label>Email Address </label>
+                                <br></br>
+                                <input className='input'
+                                    type='text'
+                                    placeholder='Email Address'
+                                    name="email"
+                                    value={details.email}
+                                    id='f2'
+                                    onKeyDown={(e) => {
+                                        if (e.key == 'Enter') {
+                                            e.preventDefault();
+                                            const nf = document.getElementById('f3')
+                                            nf?.focus();
+                                        }
+                                    }}
+                                    onChange={handlechange}>
+                                </input>
+                            </div>
+                            <p>{Error.email ? <span>{Error.email}</span> : ""}</p>
+                            <div className='inputfield1'>
+                                <label>Phone Number </label>
+                                <br></br>
+                                <input className='input'
+                                    type='tel'
+                                    inputMode='numeric'
+                                    placeholder='Phone Number'
+                                    name="phoneNumber"
+                                    value={details.phoneNumber}
+                                    id='f3'
+                                    onChange={handlechange}
+                                    onKeyDown={(e) => {
+                                        if (!/[0-9]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') {
+                                            e.preventDefault();
+                                        }
+                                        if (e.key == 'Enter') {
+                                            e.preventDefault();
+                                            const nf = document.getElementById('f4')
+                                            nf?.focus();
+                                        }
+                                    }}
+                                    maxLength={10}>
+                                </input>
+                            </div>
+                            <p>{Error.phoneNumber && <span>{Error.phoneNumber}</span>}</p>
+                            <div className='inputfield1'>
+                                <label>Password </label>
+                                <br></br>
+                                <input className='input'
+                                    type='password'
+                                    placeholder='Password'
+                                    name="password"
+                                    value={details.password}
+                                    id='f4'
+                                    onKeyDown={(e) => {
+                                        if (e.key == 'Enter') {
+                                            e.preventDefault();
+                                            const nf = document.getElementById('f5')
+                                            nf?.focus();
+                                        }
+                                    }}
+                                    onChange={handlechange}
+                                    maxLength={10}>
+                                </input>
+                            </div>
+                            <p>{Error.password && <span>{Error.password}</span>}</p>
+                            <div className='inputfield1'>
+                                <label>Confirm password </label>
+                                <br></br>
+                                <input className='input'
+                                    placeholder='Confirm password'
+                                    name="confirmPassword"
+                                    type='password'
+                                    value={details.confirmPassword}
+                                    id='f5'
+                                    onKeyDown={(e) => {
+                                        if (e.key == 'Enter') {
+                                            const nf = document.getElementById('button')
+                                            nf?.focus();
+                                        }
+                                    }}
+                                    onChange={handlechange}
+                                    maxLength={10}>
+                                </input>
+                            </div>
+                            <p>{Error.confirmPassword && <span>{Error.confirmPassword}</span>}</p>
+                            <p id='success'>{result}</p>
+                            <div className='Button'><button type='submit' id='button' className='button'> CREATE ACCOUNT</button></div>
+                        </form>
+                    </div>
                 </div>
-                <div className='form'>
-                    <form onSubmit={handlesubmit}>
-                        <div className='title'><b>Create  a  Secure  Account</b></div>
-                        <div className='subtitle'>Welcome to the future of insurance</div>
-                        <div className='inputfield'>
-                            <label>Full Name </label>
-                            <br></br>
-                            <input className='input'
-                                placeholder='Full Name'
-                                name="fullName"
-                                value={details.fullName}
-                                onChange={handlechange}
-                                type='text'
-                                id='f1'
-                                onKeyDown={(e) => {
-                                    if (!/[a-zA-Z]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') {
-                                        e.preventDefault();
-                                    }
-                                    if (e.key == 'Enter') {
-                                        e.preventDefault();
-                                        const nf = document.getElementById('f2')
-                                        nf?.focus();
-                                    }
-                                }}
-                                maxLength={20}>
-                            </input>
-                        </div>
-                        <p>{Error.fullName ? <span>{Error.fullName}</span> : ""}</p>
-                        <div className='inputfield'>
-                            <label>Email Address </label>
-                            <br></br>
-                            <input className='input'
-                                type='text'
-                                placeholder='Email Address'
-                                name="email"
-                                value={details.email}
-                                id='f2'
-                                onKeyDown={(e) => {
-                                    if (e.key == 'Enter') {
-                                        e.preventDefault();
-                                        const nf = document.getElementById('f3')
-                                        nf?.focus();
-                                    }
-                                }}
-                                onChange={handlechange}>
-                            </input>
-                        </div>
-                        <p>{Error.email ? <span>{Error.email}</span> : ""}</p>
-                        <div className='inputfield'>
-                            <label>Phone Number </label>
-                            <br></br>
-                            <input className='input'
-                                type='tel'
-                                inputMode='numeric'
-                                placeholder='Phone Number'
-                                name="phoneNumber"
-                                value={details.phoneNumber}
-                                id='f3'
-                                onChange={handlechange}
-                                onKeyDown={(e) => {
-                                    if (!/[0-9]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') {
-                                        e.preventDefault();
-                                    }
-                                    if (e.key == 'Enter') {
-                                        e.preventDefault();
-                                        const nf = document.getElementById('f4')
-                                        nf?.focus();
-                                    }
-                                }}
-                                maxLength={10}>
-                            </input>
-                        </div>
-                        <p>{Error.phoneNumber && <span>{Error.phoneNumber}</span>}</p>
-                        <div className='inputfield'>
-                            <label>Password </label>
-                            <br></br>
-                            <input className='input'
-                                type='password'
-                                placeholder='Password'
-                                name="password"
-                                value={details.password}
-                                id='f4'
-                                onKeyDown={(e) => {
-                                    if (e.key == 'Enter') {
-                                        e.preventDefault();
-                                        const nf = document.getElementById('f5')
-                                        nf?.focus();
-                                    }
-                                }}
-                                onChange={handlechange}
-                                maxLength={10}>
-                            </input>
-                        </div>
-                        <p>{Error.password && <span>{Error.password}</span>}</p>
-                        <div className='inputfield'>
-                            <label>Confirm password </label>
-                            <br></br>
-                            <input className='input'
-                                placeholder='Confirm password'
-                                name="confirmPassword"
-                                type='password'
-                                value={details.confirmPassword}
-                                id='f5'
-                                onKeyDown={(e) => {
-                                    if (e.key == 'Enter') {
-                                        const nf = document.getElementById('button')
-                                        nf?.focus();
-                                    }
-                                }}
-                                onChange={handlechange}
-                                maxLength={10}>
-                            </input>
-                        </div>
-                        <p>{Error.confirmPassword && <span>{Error.confirmPassword}</span>}</p>
-                        <p id='success'>{result}</p>
-                        <div className='Button'><button type='submit' id='button' className='button'> CREATE ACCOUNT</button></div>
-                    </form>
+                <div className='second-section'>
+                    <div className='ss-text'>
+                        <h3>Incredibly low premiums</h3>
+                        <h3> 100% paperless & digital</h3>
+                        <h3>Hassle-free claims</h3>
+                    </div>
+                    <div className='image1'>
+                        <img src='Group 1000004714.svg' width="399" height="250" ></img>
+                    </div>
                 </div>
             </div>
             <div className='second-section'>
