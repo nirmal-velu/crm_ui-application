@@ -8,7 +8,9 @@ import { useState } from 'react';
 // import { validatePhone } from '../Validation/PhoneValidate';
 // import phoneimg from '../assets/phone-girl.png';
 import mobileimg from '../assets/mobileLogo.svg'
-import axios from 'axios';
+import AuthService from '../service/authservice';
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 
 
 
@@ -20,6 +22,8 @@ const Login: React.FC<Props> = () => {
     const [phoneNo, setPhoneNo] = useState<string>()
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<boolean>(false)
+    const [successMessage, setSuccessMessage] = useState<string | null>(null);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
     // const [isValidEmail, setIsValidEmail] = useState<boolean>(true);
     // const [invalidUser, setInvalidUser] = useState<boolean>(false);
     // const [isPhoneValid, setIsPhoneValid] = useState<boolean>(true);
@@ -80,31 +84,66 @@ const Login: React.FC<Props> = () => {
         navigate('/forgot-password'); // Use navigate to go to the register page
       };
 
-    const handleSubmit = (e: FormEvent): void => {
+      const handleSubmit = async (e: FormEvent): Promise<void> => {
         e.preventDefault();
-       
-        if (inputType == "email") {
-            const body = {
-                "email": emailId,
-                "password": password
+    
+        try {
+            if (inputType === "email") {
+                const body = {
+                    "email": emailId,
+                    "password": password
+                };
+    
+                const response = await AuthService.Login(body);
+    
+                if (response.statusCode === 200) {
+                    navigate('/dashboard');
+                } else {
+                    //throw new Error(response.message);
+                    setErrorMessage(
+                        response.message || "Error Login. Please try again."
+                      );
+                }
+    
+                setError(false);
+            } else if (inputType === "number") {
+                const data = {
+                    "phoneNumber": phoneNo,
+                    "password": password
+                };
+    
+                const response = await AuthService.Login(data);
+    
+                if (response.statusCode === 200) {
+                    navigate('/dashboard');
+                } else {
+                    //throw new Error(response.message);
+                    setErrorMessage(
+                        response.message || "Error Login. Please try again."
+                      );
+                }
+    
+                console.log("submit called");
+                setError(false);
+            } else {
+                setError(true);
             }
-            const response = axios.post(apiBaseUrl + "/register/login", body)
-
-            setError(false);
-        } else if (inputType == "number") {
-            const data = {
-                "phoneNumber": phoneNo,
-                "password": password
-            }
-            const response = axios.post(apiBaseUrl + "/register/login", data)
-
-            console.log("submit called")
-            setError(false)
-        } else {
-            setError(true)
+        } catch (error:any) {
+            console.error("Error:", error.message);
+            setErrorMessage(
+                error.response.data.message || "Error generating OTP. Please try again."
+              );
+              setError(true);
+            // Handle the error as needed, e.g., set an error state or display a message.
         }
-
     };
+    
+
+    const handleClose = () => {
+        setError(false);
+        setSuccessMessage(null);
+        setErrorMessage(null);
+      };
 
     return (
         <>
@@ -177,6 +216,22 @@ const Login: React.FC<Props> = () => {
                 </div>
 
                 <div className='right-container'>
+                <Snackbar
+            open={error || successMessage !== null}
+            autoHideDuration={3000} // Adjust the duration (in milliseconds) as needed
+            onClose={handleClose}
+            anchorOrigin={{ vertical: "top", horizontal: "right" }}
+          >
+            <MuiAlert
+              elevation={6}
+              variant={error ? "filled" : "filled"}
+              severity={error ? "error" : "success"}
+              onClose={handleClose}
+            >
+              {error && errorMessage && errorMessage}
+              {successMessage && successMessage}
+            </MuiAlert>
+          </Snackbar>
                     <div className='login-content-div'>
                         <div className='align-content-div'>
                             <p> Incredibly low premiums</p>

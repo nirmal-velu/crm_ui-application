@@ -11,7 +11,7 @@ import MuiAlert from "@mui/material/Alert";
 
 interface Props {}
 
-const ForgotPassword: React.FC<Props> = () => {
+const ForgotPasswordOTP: React.FC<Props> = () => {
   const [emailId, setEmailId] = useState<any>("");
   const [phoneNo, setPhoneNo] = useState<string>();
   // const [password, setPassword] = useState<string>('');
@@ -20,6 +20,7 @@ const ForgotPassword: React.FC<Props> = () => {
   const [inputType, setInputType] = useState<any>("text");
   const [inputValue, setInputValue] = useState<string>("");
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [otp, setOtp] = useState(['', '', '', '', '', '']); // State to store each digit of OTP
 
   const navigate = useNavigate();
 
@@ -67,7 +68,7 @@ const ForgotPassword: React.FC<Props> = () => {
         };
         response = await AuthService.generateOtp(data);
         if (response.statusCode === 200) {
-          navigate("/forgot-password-otp"); // Use navigate to go to the register page OTP SCREEN
+          navigate("/register"); // Use navigate to go to the register page OTP SCREEN
           return;
         } else {
           setErrorMessage(
@@ -94,6 +95,12 @@ const ForgotPassword: React.FC<Props> = () => {
     setSuccessMessage(null);
     setErrorMessage(null);
   };
+  
+  const handleOtpChange = (index: number, value: string) => {
+    const newOtp = [...otp];
+    newOtp[index] = value;
+    setOtp(newOtp);
+  };
 
 
   return (
@@ -117,9 +124,9 @@ const ForgotPassword: React.FC<Props> = () => {
                 <h2 id="login-page-txt">Forgot-Password</h2>
               </div>
               <div className="input-field-div">
-                <label id="email-label">Email or Phone Number</label>
+                {/* <label id="email-label">Email or Phone Number</label> */}
                 {/* <input type='text' id='email-id-input' placeholder='Email or Phone Number' value={emailId} onChange={handleEmailData} /> */}
-                {inputType === "text" && (
+                {/* {inputType === "text" && (
                   <input
                     type="text"
                     className="email-id-input"
@@ -151,7 +158,19 @@ const ForgotPassword: React.FC<Props> = () => {
                     onChange={handleInputChange}
                     placeholder="Email or Phone Number"
                   />
-                )}
+                )} */}
+
+<div className="otp-inputs">
+              {otp.map((digit, index) => (
+                <input
+                  key={index}
+                  type="text"
+                  value={digit}
+                  onChange={(e) => handleOtpChange(index, e.target.value)}
+                  max-Length="1"
+                />
+              ))}
+            </div>
 
                 {/* <label className='password-label'>Enter New Password</label>
                                 <input type='password' id='password-input' placeholder='Password' value={password} onChange={handlePassword} /> */}
@@ -162,6 +181,9 @@ const ForgotPassword: React.FC<Props> = () => {
                 </button>
                 {/* </div> */}
               </div>
+
+              <div className="input-field-div">
+                </div>
             </div>
           </form>
         </div>
@@ -199,7 +221,4 @@ const ForgotPassword: React.FC<Props> = () => {
   );
 };
 
-
-export default ForgotPassword;
-
-
+export default ForgotPasswordOTP;
