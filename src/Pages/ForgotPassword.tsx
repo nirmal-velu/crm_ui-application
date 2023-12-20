@@ -37,6 +37,7 @@ const ForgotPassword: React.FC<Props> = () => {
       const email = value.toLowerCase();
       setInputType("email");
       setEmailId(email);
+      localStorage.setItem("enteredEmail", email);
     } else if (/^\d+$/.test(value)) {
       // const number=value.slice(0,20);
       console.log("number");
@@ -56,6 +57,7 @@ const ForgotPassword: React.FC<Props> = () => {
 
     try {
       let response;
+
       if (inputType === "email") {
         const body = {
           email: emailId,
@@ -66,24 +68,24 @@ const ForgotPassword: React.FC<Props> = () => {
           phoneNumber: phoneNo,
         };
         response = await AuthService.generateOtp(data);
-        if (response.statusCode === 200) {
-          navigate("/forgot-password-otp"); // Use navigate to go to the register page OTP SCREEN
-          return;
-        } else {
-          setErrorMessage(
-            response.message || "Error generating OTP. Please try again."
-          );
-        }
       } else {
         setError(true);
         return;
       }
 
-      setError(false);
+      if (response.statusCode === 200) {
+        setSuccessMessage(response.message || "OTP generated successfully.");
+        navigate("/forgot-password-otp"); // Use navigate to go to the forgotpasswordOTP screen
+      } else {
+        setErrorMessage(
+          response.message || "Error generating OTP. Please try again."
+        );
+        setError(true);
+      }
     } catch (error: any) {
       console.error("API call error:", error);
       setErrorMessage(
-        error.response.data.message || "Error generating OTP. Please try again."
+        error.response?.data?.message || "Error generating OTP. Please try again."
       );
       setError(true);
     }
