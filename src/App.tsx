@@ -9,6 +9,7 @@ import Register from './components/Register';
 import ForgotPassword from './Pages/ForgotPassword';
 import Dashboard from './Pages/Dashboard';
 import ForgotPasswordOTP from './Pages/ForgotPasswordOTP';
+import ForgotNewPassword from './Pages/ForgotNewPassword'
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
         <Route path='/dashboard' element={<Dashboard/>}/>
         <Route path='/insurancecoverage' element={<InsuranceCoverage/>}/>
         <Route path='/forgot-password-otp' element={<ForgotPasswordOTP/>}/>
-
+        <Route path='/forgot-new-password' element={<ForgotNewPassword/>}/>
+        
         </Routes>
       </Router>
 

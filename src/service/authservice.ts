@@ -8,16 +8,24 @@ export interface VerifyOtpPayload {
   email?: string;
   phoneNumber?: string;
 }
+
+export interface UpdatePasswordPayload {
+  newPassword: string;
+  confirmPassword: string;
+  email?: string;
+  phoneNumber?: string;
+}
+
 const AuthService = {
 
-    Login: async (data: any): Promise<any> => {
-        try {
-          const response = await axios.post(`${apiBaseUrl}/register/login`, data);
-          return response.data; // Assuming your API returns data with status information
-        } catch (error) {
-          throw error;
-        }
-      },
+  Login: async (data: any): Promise<any> => {
+    try {
+      const response = await axios.post(`${apiBaseUrl}/register/login`, data);
+      return response.data; // Assuming your API returns data with status information
+    } catch (error) {
+      throw error;
+    }
+  },
 
   generateOtp: async (data: any): Promise<any> => {
     try {
@@ -37,6 +45,33 @@ const AuthService = {
     }
   },
 
+  updatePassword: async (data: UpdatePasswordPayload): Promise<any> => {
+    try {
+      // Retrieve necessary value from local storage
+      const userIdentifier = localStorage.getItem('enteredEmail');
+
+      const payload: UpdatePasswordPayload = {
+        newPassword: data.newPassword,
+        confirmPassword: data.confirmPassword,
+      };
+
+      // Determine whether to include phoneNumber or email in the payload based on local storage value
+      if (userIdentifier?.includes('@')) {
+        payload.email = userIdentifier as string;
+      } else {
+        payload.phoneNumber = userIdentifier as string;
+      }
+
+      const response = await axios.put(`${apiBaseUrl}/register/update-password`, payload);
+      return response.data; // Assuming your API returns data with status information
+    } catch (error) {
+      throw error;
+    }
+  },
+
 };
 
 export default AuthService;
+
+
+

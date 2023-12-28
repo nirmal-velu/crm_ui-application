@@ -111,22 +111,22 @@ const ForgotPasswordOTP: React.FC<Props> = () => {
 
       // Log the response status code to the console
       console.log('Response Status Code:', response.statusCode);
-      
+
       // Check if response.data is null before accessing the message property
       const message = response.data ? response.data.message : null;
-      
+
       // Display the message based on success or error
       if (response.statusCode === 200) {
         // It's a success, log to the console and navigate to the next screen
         console.log('OTP verified successfully!');
-        navigate("/forgot-password");
+        navigate("/forgot-new-password");
       } else {
         // It's an error, log to the console and set error state and error message
         console.error('Error verifying OTP:', message);
         setError(true);
         setErrorMessage(message || "Error verifying OTP. Please try again.");
       }
-      
+
       // Clear error state for subsequent attempts
       setError(false);
     }

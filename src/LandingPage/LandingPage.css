@@ -271,6 +271,38 @@ mobile 319-480 */
     /* 200% */
 }
 
+
+.new-password-input {
+    border-radius: 4px;
+    height: 40px;
+    background: #EDF2F7;
+    text-indent: 10px;
+    color: #87909E;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    margin-bottom: 10px; 
+    /* 200% */
+}
+
+.confirm-password-input {
+    border-radius: 4px;
+    height: 40px;
+    background: #EDF2F7;
+    text-indent: 10px;
+    color: #87909E;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    
+    /* 200% */
+}
+
+
 #email-label {
     color: #4A5568;
     font-family: Poppins;
@@ -386,6 +418,12 @@ input[type="number"] {
     height: 100vh;
     background-color: #36256E;
 }
+
+.rights-container {
+    flex: 1; /* This ensures the right container takes the remaining space */
+    background-color: #fff; /* Set a background color for visibility */
+    padding: 20px; /* Add padding for spacing */
+  }
 
 .login-content-div {
     display: flex;
