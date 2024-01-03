@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@700&family=Inter&family=Montserrat+Alternates:wght@500&family=Poppins:wght@400;600&family=Roboto+Flex:opsz,wght@8..144,200&display=swap');
+
+/* CircleStepper.css */
+/* 
+.circle-stepper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .step {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .step.active {
+    border-color: #00f; /* Color for the active step */
+/* }
+  
+  .step.filled {
+    background-color: #0f0; 
+  } */
+*/ .stepper {
+  background: #36256E;
+
+}
+
+.selector {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.steps-container {
+  /* position: relative; */
+  /* background-color: #36256E; */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.progress-line {
+  /* position: absolute; */
+  height: 2px;
+  background: gray;
+  /* width: 100%; */
+  /* top: 50%; */
+  /* left: 0; */
+  /* z-index: -1; */
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.steps-wrapper {
+  width: 50%;
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin: auto;
+}
+
+.steps {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #D9D9D9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* transition: all 0.2s ease; */
+  cursor: pointer;
+}
+
+.steps.active {
+  border: 1px solid #E73493;
+}
+
+.form-submitted.steps.active {
+  background-color: #E73493;
+  /* Update with your desired background color */
+}
+
+.steps1.active {
+  color: #E73493;
+}
+
+.remove-txt {
+  color: #F00;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+}
+
+#step-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.steps1 {
+  width: 64%;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  justify-content: space-around;
+  margin: auto;
+}
+
+.footer-div {
+  color: #FFF;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
