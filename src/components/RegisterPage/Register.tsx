@@ -68,20 +68,16 @@ function Register() {
     const handlesubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-
-
         const validationError = validate(details);
         if (Object.keys(validationError).length > 0) {
             console.log("error added")
             setError(validationError);
-            return;
         }
         // await setError(validate(details));
 
         // const response = await axios.post('http://localhost:8081/api/register/register', details)
         // console.log(response.data)
         // console.log("added")
-
 
         try {
             if (!Object.keys(validationError).length) {
@@ -118,9 +114,9 @@ function Register() {
                         <img src='Group.svg' width="38" height="45"></img>
                         <h1>Insurance Company</h1>
                     </div>
-                    <div className='form'>
+                    <div className='reg-form'>
                         <form onSubmit={handlesubmit}>
-                            <div className='title'><b>Create  a  Secure  Account</b></div>
+                            <div className='ins-title'><b>Create  a  Secure  Account</b></div>
                             <div className='subtitle'>Welcome to the future of insurance</div>
                             <div className='inputfield1'>
                                 <label>Full Name </label>
@@ -145,7 +141,7 @@ function Register() {
                                     maxLength={20}>
                                 </input>
                             </div>
-                            <p>{Error.fullName ? <span>{Error.fullName}</span> : ""}</p>
+                            <p className='reg-err-msg'>{Error.fullName ? <span>{Error.fullName}</span> : ""}</p>
                             <div className='inputfield1'>
                                 <label>Email Address </label>
                                 <br></br>
@@ -165,7 +161,7 @@ function Register() {
                                     onChange={handlechange}>
                                 </input>
                             </div>
-                            <p>{Error.email ? <span>{Error.email}</span> : ""}</p>
+                            <p className='reg-err-msg'>{Error.email ? <span>{Error.email}</span> : ""}</p>
                             <div className='inputfield1'>
                                 <label>Phone Number </label>
                                 <br></br>
@@ -190,7 +186,7 @@ function Register() {
                                     maxLength={10}>
                                 </input>
                             </div>
-                            <p>{Error.phoneNumber && <span>{Error.phoneNumber}</span>}</p>
+                            <p className='reg-err-msg'>{Error.phoneNumber && <span>{Error.phoneNumber}</span>}</p>
                             <div className='inputfield1'>
                                 <label>Password </label>
                                 <br></br>
@@ -211,7 +207,7 @@ function Register() {
                                     maxLength={10}>
                                 </input>
                             </div>
-                            <p>{Error.password && <span>{Error.password}</span>}</p>
+                            <p className='reg-err-msg'>{Error.password && <span>{Error.password}</span>}</p>
                             <div className='inputfield1'>
                                 <label>Confirm password </label>
                                 <br></br>
@@ -231,7 +227,7 @@ function Register() {
                                     maxLength={10}>
                                 </input>
                             </div>
-                            <p>{Error.confirmPassword && <span>{Error.confirmPassword}</span>}</p>
+                            <p className='reg-err-msg'>{Error.confirmPassword && <span>{Error.confirmPassword}</span>}</p>
                             <p id='success'>{result}</p>
                             <div className='Button'><button type='submit' id='button' className='button'> CREATE ACCOUNT</button></div>
                         </form>
@@ -244,20 +240,11 @@ function Register() {
                         <h3>Hassle-free claims</h3>
                     </div>
                     <div className='image1'>
-                        <img src='Group 1000004714.svg' width="399" height="250" ></img>
+                        <img src='Group 1000004714.svg' width="350" height="250" ></img>
                     </div>
                 </div>
             </div>
-            <div className='second-section'>
-                <div className='ss-text'>
-                    <h3>Incredibly low premiums</h3>
-                    <h3> 100% paperless & digital</h3>
-                    <h3>Hassle-free claims</h3>
-                </div>
-                <img src='Group 1000004714.svg' width="399" height="270"></img>
-            </div>
         </div>
-        // </div>
     )
 }
 

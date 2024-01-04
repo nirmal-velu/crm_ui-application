@@ -5,6 +5,7 @@
     display: flex;
     margin: 0%;
     padding: 0%;
+    min-height: 100vh;
     height: auto;
     width: 100%;
     font-family: 'Poppins', sans-serif;
@@ -18,11 +19,6 @@
 }
 
 .second-section {
-    /* display: flex;
-    flex: 4;
-    background-color: #36256E;
-    position: relative; */
-
     display: flex;
     flex-direction: column;
     flex: 4;
@@ -35,6 +31,7 @@
     display: flex;
     padding: 30px;
     align-items: center;
+    background-color: white;
 }
 
 .header h1 {
@@ -45,22 +42,23 @@
     color: #36256E;
 }
 
-.form {
+.reg-form {
     display: flex;
     width: 100%;
     height: fit-content;
     justify-content: center;
 }
 
-.form p {
+
+.reg-err-msg {
     padding: 0.1px;
     color: red;
-    margin: 15px;
+    margin: 10px;
     font-size: 13px;
     font-style: normal;
 }
 
-.first-section form label {
+.reg-form label {
     color: #4A5568;
     font-size: 12px;
     font-style: normal;
@@ -68,11 +66,10 @@
     line-height: 24px;
 }
 
-.title {
+.ins-title {
     color: #36256E;
     text-align: center;
     font-size: 24px;
-    font-style: normal;
     font-weight: 600;
     line-height: 36px;
 }
@@ -88,7 +85,7 @@
     line-height: 21px;
 }
 
-.form input {
+.reg-form input {
     width: 300px;
     height: 45px;
     background-color: #EDF2F7;
@@ -109,6 +106,7 @@ input::placeholder {
 #success {
     color: rgb(103, 225, 103);
     text-align: center;
+    margin: 5px;
 }
 
 .button {
@@ -148,7 +146,6 @@ input::placeholder {
     display: flex;
     flex-direction: column;
     align-content: center;
-    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -156,7 +153,6 @@ input::placeholder {
     font-weight: 500;
     font-size: 24px;
     margin: 0px;
-    font-style: normal;
 }
 
 /* @media screen and (max-width: 768px) {} */
