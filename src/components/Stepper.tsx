@@ -3,6 +3,7 @@ import React, { useState, ReactElement, ReactNode } from "react";
 import '../components/Stepper.css'
 import insurance from '../assets/insuranceLogo.svg'
 import login from '../assets/login-logo.png'
+import { useNavigate } from "react-router";
 
 
 interface StepperProps {
@@ -11,6 +12,7 @@ interface StepperProps {
 
 const Stepper: React.FC<StepperProps> = ({ list }) => {
   const [currentStep, setCurrentStep] = useState(0);
+  const navigate = useNavigate();
 
   const stepsCount = list.length;
   const steps: ReactNode[] = [];
@@ -45,6 +47,10 @@ const Stepper: React.FC<StepperProps> = ({ list }) => {
     }
   };
 
+  const handleLogin = () => {
+    navigate('/login');
+}
+
   const onNext = () => {
     if (currentStep !== list.length - 1) {
       setCurrentStep(currentStep + 1);
@@ -59,7 +65,7 @@ const Stepper: React.FC<StepperProps> = ({ list }) => {
           <img className='me-3' src={insurance} /><span className='insurance-txt'>Insurance Company</span>
         </div>
         <div className="col-auto me-2">
-          <span className='login-txt' >Login</span> <img className='login-img' src={login} />
+        <span className='login-txt' onClick={handleLogin}>Login</span> <img className='login-img' onClick={handleLogin} src={login} />
         </div>
       </div>
       <div className="steps-container mt-4">
