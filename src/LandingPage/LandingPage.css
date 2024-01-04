@@ -9,6 +9,7 @@ body {
     /* background-color: #36256E; */
     height: 100vh;
     background: linear-gradient(to bottom, #36256E 50%, #FFF 50%);
+
 }
 
 .ins-log-div {
@@ -17,6 +18,7 @@ body {
     width: 95%;
     margin: auto;
 }
+
 
 .insurance-img {
     width: 37.29px;
@@ -31,6 +33,7 @@ body {
 }
 
 .insurance-txt {
+
     color: #FFF;
     font-family: Poppins;
     font-size: 24px;
@@ -48,6 +51,7 @@ body {
     width: 14.6px;
     height: 24px;
     cursor: pointer;
+
 }
 
 .login-txt {
@@ -97,6 +101,7 @@ body {
     line-height: 60px;
 }
 
+
 .all-insurance-logos {
     display: flex;
     justify-content: center;
@@ -112,6 +117,7 @@ body {
     width: 70px;
     height: 70px;
 } */
+
 .logos {
     background-color: #FFFFFF;
     fill: #FFF;
@@ -123,6 +129,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .logos-health {
@@ -134,6 +141,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .img-logos {
@@ -152,6 +160,7 @@ body {
 }
 
 .quote-div {
+
     text-align: center;
     font-family: Poppins;
     font-size: 18px;
@@ -159,6 +168,7 @@ body {
     font-weight: 600;
     line-height: normal;
     margin-top: 40px;
+
 }
 
 #quote-btn {
@@ -176,6 +186,7 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 100px;
+
     color: #36256E;
     text-align: center;
     font-family: Poppins;
@@ -193,7 +204,9 @@ mobile 319-480 */
       margin-top: 20px; 
   }
 } */
+
 /* ---------------------------------------------------Login Page-------------------------------------------------------- */
+
 #login-container-id {
     display: flex;
 }
@@ -395,9 +408,11 @@ input[type="number"] {
     font-weight: 600;
     line-height: 24px;
     /* 150% */
+
 }
 
 /* -----------------------------------------login page right side-------------------------------------------------------- */
+
 .right-container {
     width: 65%;
     height: 100vh;
@@ -442,6 +457,7 @@ input[type="number"] {
 }
 
 /* ------------------------------------insurance coverage--------------- */
+
 /* #img-ins{
     fill: #FFF;
     filter: drop-shadow(rgba );
