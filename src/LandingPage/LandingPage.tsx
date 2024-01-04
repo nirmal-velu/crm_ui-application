@@ -19,6 +19,9 @@ const LandingPage: React.FC<LandingPageProps> = () => {
     const handle = () => {
         window.location.href = '/login';
     };
+    const StepperClick = () => {
+        navigate('/stepperlist');
+    };
     const handleLogin = () => {
         navigate('/login');
     }
@@ -145,7 +148,7 @@ const LandingPage: React.FC<LandingPageProps> = () => {
 
                 {/* </div> */}
                 <div className='quote-div'>
-                    <button id='quote-btn'>Get Quote</button>
+                <button id='quote-btn' onClick={StepperClick}>Get Quote</button>
                 </div>
                 <footer className='footer'>
                     <a ><pre onClick={handle}> About Us  |</pre></a>
