@@ -3,13 +3,19 @@ import tick from '../assets/Group (3).svg'
 import Add from '../assets/plus.png'
 import minus from '../assets/minus.png'
 import axios from 'axios';
+import StepperMobile from './Steppermobile';
+import StepperOtp from './stepperotp';
+import Stepper from './Stepper';
+import { useNavigate } from 'react-router-dom';
+
+
 interface Stepper1Props {
     onPrev?: () => void;
     onNext?: () => void;
 }
 
 interface FormData {
-    self:any;
+    self: any;
     spouse: any;
     children: number;
     // familyMembers: string;
@@ -17,12 +23,13 @@ interface FormData {
     ageOfElderParentInLaw: number;
     ageOfElder: number;
     parents: number;
+    phoneNumber: number;
     parentInLaws: number;
 }
 
 const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
-    const [currentStep, setCurrentStep] = useState(0);
-    const [form, setForm] = useState(false);
+    // const [currentStep, setCurrentStep] = useState(0);
+    const [nextForm, setNextForm] = useState(false);
     const [currentForm, setCurrentForm] = useState(true);
     const [self, setSelf] = useState(true);
     const [condition, setCondition] = useState(true);
@@ -34,10 +41,10 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
     const [spouse, setSpouse] = useState(true);
     // const [state,setState]=useState(false);
     const [formSubmitted, setFormSubmitted] = useState(false);
-
+    const navigate = useNavigate();
     // const [childrenCount, ChildrenCount] = useState(0)
     const [formData, setFormData] = useState<FormData>({
-        self:false,
+        self: false,
         spouse: false,
         children: count,
         // familyMembers: '',
@@ -46,6 +53,7 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
         ageOfElderParentInLaw: 0,
         parents: count1,
         parentInLaws: count2,
+        phoneNumber: 0,
     });
 
     useEffect(() => {
@@ -119,13 +127,18 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
         index: number
     ) => {
         const { value } = e.target;
-
         setFormData((prevState) => {
-            const numericValue = parseInt(value, 10);
-
+            const updatedCategory = [...(prevState[category] || [])]
+            // If the value is an empty string, remove the element at the specified index
+            if (value === '') {
+                updatedCategory.splice(index, 1);
+            } else {
+                const numericValue = parseInt(value, 10);
+                updatedCategory[index] = isNaN(numericValue) ? null : numericValue;
+            }
             return {
                 ...prevState,
-                [category]: isNaN(numericValue) ? prevState[category] : numericValue,
+                [category]: updatedCategory,
             };
         });
     };
@@ -134,7 +147,7 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
         setSelf(state)
         setFormData({
             ...formData,
-            self:self,
+            self: self,
         })
     }
 
@@ -222,135 +235,154 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
         }
         return parentinlaw;
     };
+    // const updateMobileNumber = (data: number) => {
+    //     // Update the mobile number in the form data
+    //     console.log(data)
+    //     setFormData((prevFormData) => ({
+    //         ...prevFormData,
+    //         phoneNumber: data,
+    //     }));
+    //     console.log(formData.phoneNumber);
+    // };
+
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const updatedFormData: FormData = {
             ...formData
         };
-    
-        try {
-            const response = await axios.post('http://localhost:1301/api/getQuote/generate', updatedFormData);
-    
-            // Handle the response if needed
-            console.log('Backend response:', response.data);
-        } catch (error) {
-            // Handle error
-            console.error('Error sending data to the backend:', error);
-        }
-    
-        
-    
-        console.log('Form Data:', updatedFormData);
-    };
-    
+        // setCurrentForm(false)
+        // setNextForm(true)
+        navigate('/steppermobile', { state: { formData } });
+    }
+    //     try {
+    //         const response = await axios.post('http://localhost:1301/api/getQuote/generate', updatedFormData);
+
+    //         // Handle the response if needed
+    //         console.log('Backend response:', response.data);
+    //     } catch (error) {
+    //         // Handle error
+    //         console.error('Error sending data to the backend:', error);
+    //     }
+
+    //     console.log('Form Data:', updatedFormData);
+    // };
+
 
     return (
-        <form onSubmit={handleSubmit} className={formSubmitted ? 'form-submitted' : ''}>
-            <div className='familyMembers d-flex justify-content-center  mt-3 mb-3'>
-                <label htmlFor="familyMembers">Who in your family needs coverage?</label>
-            </div>
-            <div id='stepper-container-div'>
-                <div className='sub-div'>
-                    <div className='d-flex mx-3 mb-2 justify-content-between'>
-                        <div className='txt-design'>
-                            self
-                        </div>
-                        {self ? (<div className='tick-checkbox mb-1' onClick={() => selfTag(false)}></div>) : (<img src={tick} onClick={() => selfTag(true)} className='img mb-1' />)}
-                    </div>
-                    <div className='d-flex mx-3 mt-1 mb-3 justify-content-between'>
-                        <label htmlFor='spouse' className='txt-design'>spouse</label>
-                        {spouse ? (<span className='add-txt' onClick={handlespouseAdd}>Add</span>)
-                            : (<span className='remove-txt' onClick={handlespouseRemove}>Remove</span>)}
-                    </div>
-                    <div className='d-flex mx-3 mb-3 justify-content-between'>
-                        <label htmlFor='children' className='txt-design'>children</label>
-                        {/* {children ? (<span className='add-txt' onClick={handlechildrenfun}>Add</span>) : */}
-                        {children ? (
-                            <div>
-                                {count === 0 ? (
-                                    <div className='add-txt' onClick={() => handlechildren('add')}>
-                                        Add
-                                    </div>
-                                ) : (
-                                    <div>
-                                        <img onClick={() => handlechildren('remove')} src={minus} className='add-img pe1' />
-                                        <span className=''>{` ${count.toString().padStart(2, '0')} `}</span>
-                                        <img onClick={() => handlechildren('add')} src={Add} className='add-img' />
-                                    </div>
-                                )}
-                            </div>
-                        ) : null}
+        <>
+            <div className='container-fluid background'>
+                <Stepper />
 
+                <form onSubmit={handleSubmit} >
+                    <div className='familyMembers d-flex justify-content-center  p-3 mb-3 mt-xxl-4'>
+                        <label htmlFor="familyMembers">Who in your family needs coverage?</label>
                     </div>
-                    <div className='d-flex mx-3 mb-2 justify-content-between'>
-                        <label htmlFor="elderMemberAge" className='txt-design'>Age of the elder member (You, spouse)</label>
-                        <input
-                            type="number"
-                            name="elderMemberAge"
-                            id="elderMemberAge"
-                            // value={formData.elderMemberAge}
-                            onChange={handleChange}
-                            required
-                            className='form-control ms-5'
-                            style={{ width: '12%', height: '30px' }}
-                        />
-                    </div>
-                    <div className='d-flex mx-3 mb-3 justify-content-between'>
-                        <label htmlFor="parents" className='txt-design'>parents</label>
-                        {condition ? (
-                            //     <div className='add-txt' onClick={handleAdd}>Add</div>
-                            // ) : (
-                            <div>
-                                {count1 === 0 ? (
-                                    <div className='add-txt' onClick={() => handleButtonClick('add')}>Add</div>
-                                ) : (
-                                    <> <img onClick={() => handleButtonClick('remove')} src={minus} className='add-img pe1' />
-                                        <span className=''>{` ${count1.toString().padStart(2, '0')} `}</span>
-                                        <img onClick={() => handleButtonClick('add')} src={Add} className='add-img' />
-                                    </>
-                                )}
-                            </div>
-                        ) : null}
-                    </div>
-                    <div className='d-flex mx-3 mb-3 justify-content-between'>
-                        <label htmlFor="parentInLaws" className='txt-design'>Parent - in - laws</label>
-                        {lawscondition ?
-                            // (<div className='add-txt' onClick={handleLaws}>Add</div>) :
-                            (
-                                <div>
-                                    {count2 === 0 ? (
-                                        <div className='add-txt' onClick={() => handleButton('add')}>Add</div>
-                                    ) :
-                                        (<div>
-                                            {/* <button type="button" > */}
-                                            <img onClick={() => handleButton('remove')} src={minus} className='add-img pe1' />
-                                            {/* </button> */}
-                                            <span className=''>{` ${count2.toString().padStart(2, '0')} `}</span>
-                                            <img onClick={() => handleButton('add')} src={Add} className='add-img' />
-
-                                        </div>
-                                        )}
+                    <div id='stepper-container-div'>
+                        <div className='sub-div'>
+                            <div className='d-flex mx-3 mb-2 justify-content-between'>
+                                <div className='txt-design'>
+                                    self
                                 </div>
-                            ) : null}
-                    </div>
-                    <div>{generateInputFields('ageOfElderParent', count1)}</div>
-                    <div>
-                        {generateParentInLaw("ageOfElderParentInLaw", count2)}
-                    </div>
-                    <div className='d-flex justify-content-center quote-div'>
-                        <button type="submit" className='quote'>Get Quote</button>
-                    </div>
-                </div>
-            </div>
-            <div className='d-flex justify-content-center mt-4'>
-                <footer className='d-flex footer-div' >
-                    <a ><pre > About Us  |</pre></a>
-                    <a> <pre>  Terms & Conditions |</pre></a>
-                    <a><pre>  Privacy Policy</pre></a>
-                </footer>
-            </div>
-        </form >
+                                {self ? (<div className='tick-checkbox mb-1' onClick={() => selfTag(false)}></div>) : (<img src={tick} onClick={() => selfTag(true)} className='img mb-1' />)}
+                            </div>
+                            <div className='d-flex mx-3 mb-3 justify-content-between'>
+                                <label htmlFor='spouse' className='txt-design'>spouse</label>
+                                {spouse ? (<span className='add-txt' onClick={handlespouseAdd}>Add</span>)
+                                    : (<span className='remove-txt' onClick={handlespouseRemove}>Remove</span>)}
+                            </div>
+                            <div className='d-flex mx-3 mb-3 justify-content-between'>
+                                <label htmlFor='children' className='txt-design'>children</label>
+                                {/* {children ? (<span className='add-txt' onClick={handlechildrenfun}>Add</span>) : */}
+                                {children ? (
+                                    <div>
+                                        {count === 0 ? (
+                                            <div className='add-txt' onClick={() => handlechildren('add')}>
+                                                Add
+                                            </div>
+                                        ) : (
+                                            <div>
+                                                <img onClick={() => handlechildren('remove')} src={minus} className='add-img pe1' />
+                                                <span className=''>{` ${count.toString().padStart(2, '0')} `}</span>
+                                                <img onClick={() => handlechildren('add')} src={Add} className='add-img' />
+                                            </div>
+                                        )}
+                                    </div>
+                                ) : null}
 
+                            </div>
+                            <div className='d-flex mx-3 mb-2 justify-content-between'>
+                                <label htmlFor="ageOfElder" className='txt-design'>Age of the elder member (You, spouse)</label>
+                                <input
+                                    type="number"
+                                    name="ageOfElder"
+                                    id="ageOfElder"
+                                    // value={formData.ageOfElder}
+                                    onChange={handleChange}
+                                    required
+                                    className='form-control ms-5'
+                                    style={{ width: '12%', height: '30px' }}
+                                />
+                            </div>
+                            <div className='d-flex mx-3 mb-3 justify-content-between'>
+                                <label htmlFor="parents" className='txt-design'>parents</label>
+                                {condition ? (
+                                    //     <div className='add-txt' onClick={handleAdd}>Add</div>
+                                    // ) : (
+                                    <div>
+                                        {count1 === 0 ? (
+                                            <div className='add-txt' onClick={() => handleButtonClick('add')}>Add</div>
+                                        ) : (
+                                            <> <img onClick={() => handleButtonClick('remove')} src={minus} className='add-img pe1' />
+                                                <span className=''>{` ${count1.toString().padStart(2, '0')} `}</span>
+                                                <img onClick={() => handleButtonClick('add')} src={Add} className='add-img' />
+                                            </>
+                                        )}
+                                    </div>
+                                ) : null}
+                            </div>
+                            <div className='d-flex mx-3 mb-3 justify-content-between'>
+                                <label htmlFor="parentInLaws" className='txt-design'>Parent - in - laws</label>
+                                {lawscondition ?
+                                    // (<div className='add-txt' onClick={handleLaws}>Add</div>) :
+                                    (
+                                        <div>
+                                            {count2 === 0 ? (
+                                                <div className='add-txt' onClick={() => handleButton('add')}>Add</div>
+                                            ) :
+                                                (<div>
+                                                    {/* <button type="button" > */}
+                                                    <img onClick={() => handleButton('remove')} src={minus} className='add-img pe1' />
+                                                    {/* </button> */}
+                                                    <span className=''>{` ${count2.toString().padStart(2, '0')} `}</span>
+                                                    <img onClick={() => handleButton('add')} src={Add} className='add-img' />
+
+                                                </div>
+                                                )}
+                                        </div>
+                                    ) : null}
+                            </div>
+                            <div>{generateInputFields('ageOfElderParent', count1)}</div>
+                            <div>
+                                {generateParentInLaw("ageOfElderParentInLaw", count2)}
+                            </div>
+                            <div className='d-flex justify-content-center quote-div'>
+                                <button type="submit" className='quote'>Get Quote</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='d-flex justify-content-center p-4 pt-xxl-5'>
+                        <footer className='d-flex footer-div mt-xxl-5' >
+                            <a ><pre > About Us  |</pre></a>
+                            <a> <pre>  Terms & Conditions |</pre></a>
+                            <a><pre>  Privacy Policy</pre></a>
+                        </footer>
+                    </div>
+                </form >
+
+                {/* <StepperMobile/> */}
+            </div>
+        </>
     );
 };
 

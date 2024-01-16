@@ -1,6 +1,5 @@
 import { SetStateAction, useState } from 'react';
 import './FamilyDetails.css';
-// import Formstepper from './stepper';
 import axios from 'axios';
 import Form from './Forms';
 
@@ -23,8 +22,6 @@ const Famdetails = () => {
         // required = requiredFields.map(field => `${Item}${field}`);
         required.push(...requiredFields.map(field => `${Item}${field}`));
     }
-    // console.log(required);
-
 
     const [formData, setFormData] = useState({}); //storing data
 
@@ -79,60 +76,59 @@ const Famdetails = () => {
     }
 
     return (
-        <div className='family-details-screen'>
-            <div className='fam-details-header'>
-                <div className='fam-details-title'>
-                    <img src='group1.svg' width="38" height="45" className='logo'></img>
-                    <p className='fam-details-titlename'>Insurance Company</p>
+        // <div className='family-details-screen'>
+        //     <div className='fam-details-header'>
+        //         <div className='fam-details-title'>
+        //             <img src='group1.svg' width="38" height="45" className='logo'></img>
+        //             <p className='fam-details-titlename'>Insurance Company</p>
+        //         </div>
+        //         <div className='fam-details-login-logo'>
+        //             <p className='fam-details-login-text'>Login</p>
+        //             <img src='login-logo.svg' width="30" height="30" className='logo'></img>
+        //         </div>
+        //     </div>
+        <div className="details-body mt-xxl-4">
+            <p className='fam-details-body-text'>Fill in your details</p>
+            <div className="details-container">
+                <div className='fam-names'>
+                    {datas.map((data, index) => (
+                        <a
+                            className={`click ${curstate === index ? 'active' : ''}`}
+                            key={index}
+                            onClick={() => {
+                                handleclick(index);
+                            }}
+                        >
+                            {data}
+                        </a>
+                    ))}
                 </div>
-                <div className='fam-details-login-logo'>
-                    <p className='fam-details-login-text'>Login</p>
-                    <img src='login-logo.svg' width="30" height="30" className='logo'></img>
+                <div className="fam-details">
+
+                    {datas[curstate] && (
+                        <Form
+                            name={`${datas[curstate]}Name`}
+                            age={`${datas[curstate]}Age`}
+                            gender={`${datas[curstate]}Gender`}
+                            phoneNumber={`${datas[curstate]}PhoneNumber`}
+                            countrycode={`${datas[curstate]}CountryCode`}
+                            email={`${datas[curstate]}Email`}
+                            preExistingDisease={`${datas[curstate]}PreExistingDisease`}
+                            medicalCondition={`${datas[curstate]}DesMedicalCon`}
+                            formdata={formData}
+                            setformdata={setFormData}
+                            submit={handleSubmit}
+                            setformerror={setFormError}
+                        />
+                    )}
                 </div>
             </div>
-            <div className="details-body">
-                {/* <Formstepper /> */}
-                <p className='fam-details-body-text'>Fill in your details</p>
-                <div className="details-container">
-                    <div className='fam-names'>
-                        {datas.map((data, index) => (
-                            <a
-                                className={`click ${curstate === index ? 'active' : ''}`}
-                                key={index}
-                                onClick={() => {
-                                    handleclick(index);
-                                }}
-                            >
-                                {data}
-                            </a>
-                        ))}
-                    </div>
-                    <div className="fam-details">
-
-                        {datas[curstate] && (
-                            <Form
-                                name={`${datas[curstate]}Name`}
-                                age={`${datas[curstate]}Age`}
-                                gender={`${datas[curstate]}Gender`}
-                                phoneNumber={`${datas[curstate]}PhoneNumber`}
-                                countrycode={`${datas[curstate]}CountryCode`}
-                                email={`${datas[curstate]}Email`}
-                                preExistingDisease={`${datas[curstate]}PreExistingDisease`}
-                                medicalCondition={`${datas[curstate]}DesMedicalCon`}
-                                formdata={formData}
-                                setformdata={setFormData}
-                                submit={handleSubmit}
-                                setformerror={setFormError}
-                            />
-                        )}
-                    </div>
-                </div>
-                {submitError ? <div className='form-error'>{submitError}</div> : ""}
-                <div className='fam-button'>
-                    <button className='form-button' form='details'>Request Approval</button>
-                </div>
+            {submitError ? <div className='form-error'>{submitError}</div> : ""}
+            <div className='fam-button'>
+                <button className='form-button' form='details'>Request Approval</button>
             </div>
         </div>
+        // </div>
     )
 }
 

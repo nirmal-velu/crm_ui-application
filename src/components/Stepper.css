@@ -29,8 +29,10 @@
   .step.filled {
     background-color: #0f0; 
   } */
-*/ .stepper {
+
+.stepper {
   background: #36256E;
+  /* height: 100vh; */
 
 }
 
@@ -45,10 +47,10 @@
   /* background-color: #36256E; */
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 75%;
+  margin: auto;
   align-items: center;
   justify-content: center;
-
 }
 
 .progress-line {
@@ -90,12 +92,16 @@
   cursor: pointer;
 }
 
-.steps.active {
+.steps.actives {
   border: 1px solid #E73493;
 }
 
-.form-submitted.steps.active {
+.bgk {
   background-color: #E73493;
+}
+
+.submitted.steps.active {
+  background: #E73493;
   /* Update with your desired background color */
 }
 
@@ -121,7 +127,7 @@
 }
 
 .steps1 {
-  width: 64%;
+  width: 48%;
   display: flex;
   align-items: center;
   color: #FFFFFF;

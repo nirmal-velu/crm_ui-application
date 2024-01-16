@@ -3,12 +3,13 @@
 
 body {
     height: 100%;
+    font-family: 'Poppins', sans-serif;
 }
 
 #container-div {
     /* background-color: #36256E; */
-    height: 100vh;
     background: linear-gradient(to bottom, #36256E 50%, #FFF 50%);
+
 }
 
 .ins-log-div {
@@ -17,6 +18,7 @@ body {
     width: 95%;
     margin: auto;
 }
+
 
 .insurance-img {
     width: 37.29px;
@@ -31,6 +33,7 @@ body {
 }
 
 .insurance-txt {
+
     color: #FFF;
     font-family: Poppins;
     font-size: 24px;
@@ -48,6 +51,7 @@ body {
     width: 14.6px;
     height: 24px;
     cursor: pointer;
+
 }
 
 .login-txt {
@@ -97,13 +101,14 @@ body {
     line-height: 60px;
 }
 
+
 .all-insurance-logos {
     display: flex;
     justify-content: center;
     /* position: absolute;
     z-index: 1; */
     /* width: 100%; */
-    margin-top: 120px;
+    margin-top: 30px;
     bottom: 45%;
     gap: 38px;
 }
@@ -112,6 +117,7 @@ body {
     width: 70px;
     height: 70px;
 } */
+
 .logos {
     background-color: #FFFFFF;
     fill: #FFF;
@@ -123,6 +129,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .logos-health {
@@ -134,6 +141,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .img-logos {
@@ -152,6 +160,7 @@ body {
 }
 
 .quote-div {
+
     text-align: center;
     font-family: Poppins;
     font-size: 18px;
@@ -159,6 +168,7 @@ body {
     font-weight: 600;
     line-height: normal;
     margin-top: 40px;
+
 }
 
 #quote-btn {
@@ -176,6 +186,7 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 100px;
+
     color: #36256E;
     text-align: center;
     font-family: Poppins;
@@ -193,7 +204,9 @@ mobile 319-480 */
       margin-top: 20px; 
   }
 } */
+
 /* ---------------------------------------------------Login Page-------------------------------------------------------- */
+
 #login-container-id {
     display: flex;
 }
@@ -257,38 +270,6 @@ mobile 319-480 */
     line-height: 24px;
     /* 200% */
 }
-
-
-.new-password-input {
-    border-radius: 4px;
-    height: 40px;
-    background: #EDF2F7;
-    text-indent: 10px;
-    color: #87909E;
-    font-family: Poppins;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px;
-    margin-bottom: 10px; 
-    /* 200% */
-}
-
-.confirm-password-input {
-    border-radius: 4px;
-    height: 40px;
-    background: #EDF2F7;
-    text-indent: 10px;
-    color: #87909E;
-    font-family: Poppins;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px;
-    
-    /* 200% */
-}
-
 
 #email-label {
     color: #4A5568;
@@ -395,20 +376,16 @@ input[type="number"] {
     font-weight: 600;
     line-height: 24px;
     /* 150% */
+
 }
 
 /* -----------------------------------------login page right side-------------------------------------------------------- */
+
 .right-container {
     width: 65%;
     height: 100vh;
     background-color: #36256E;
 }
-
-.rights-container {
-    flex: 1; /* This ensures the right container takes the remaining space */
-    background-color: #fff; /* Set a background color for visibility */
-    padding: 20px; /* Add padding for spacing */
-  }
 
 .login-content-div {
     display: flex;
@@ -438,10 +415,11 @@ input[type="number"] {
 #phone-img {
     width: 62%;
     height: 200px;
-    margin-top: 8%;
+    /* margin-top: 8%; */
 }
 
 /* ------------------------------------insurance coverage--------------- */
+
 /* #img-ins{
     fill: #FFF;
     filter: drop-shadow(rgba );
@@ -525,17 +503,16 @@ input[type="number"] {
 }
 
 /* -------------------------------------------------stepper container------------------------------------------------------- */
-
+/* 
 .stepper {
     background: #36256E;
     height: 100vh;
     overflow: hidden
-}
-
+} */
 #stepper-container-div {
     background: #36256E;
-    width: 35%;
-    height: 55vh;
+    width: 430px;
+    height: 40vh;
     max-height: 55vh;
     border-radius: 10px;
     background: #FFF;
@@ -546,7 +523,7 @@ input[type="number"] {
 }
 
 .sub-div {
-    margin: auto;
+    /* margin: auto; */
     padding: 3%;
     max-height: 50vh;
     overflow: hidden;
@@ -568,6 +545,11 @@ input[type="number"] {
 .stepper-insurance-div {
     display: flex;
     justify-content: space-between;
+}
+
+.background {
+    background: #36256E;
+    height: 100vh;
 }
 
 .familyMembers {
@@ -635,9 +617,9 @@ input[type="number"] {
     background-color: #32BA7C;
     border-radius: 50%;
     /* Create rounded corners */
-    /* display: flex; */
-    /* Center the cross */
-    /* justify-content: center;
+/* display: flex; */
+/* Center the cross */
+/* justify-content: center;
     align-items: center;
 }  */
 
@@ -658,14 +640,647 @@ ul {
     font-weight: 400;
     line-height: normal;
 }
-.input-field{
+
+.input-field {
     width: 12%;
     height: 30px;
 }
 
-.tick-checkbox{
+.tick-checkbox {
     border-radius: 50%;
     border: 1px solid green;
     width: 22px;
     height: 22px;
+}
+
+/* ------------------------------------------------mobile otp------------------------------------------------------ */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+/* body {
+    margin: 0%;
+    padding: 0%;
+    font-family: 'Poppins', sans-serif;
+    background-color: #36256E;
+} */
+
+.mob-num-screen {
+    height: 100vh;
+    width: 100%;
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+}
+
+.mob-num-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 15%;
+}
+
+.mob-num-titlename {
+    color: #FFF;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.mob-num-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    gap: 10px;
+}
+
+.mob-num-login-logo {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    gap: 10px;
+    align-items: center;
+}
+
+.mob-num-login-text {
+    color: #FFF;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.mob-num-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* height: 85%; */
+}
+
+.mob-num-body-text {
+    color: #FFF;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.mob-num-container {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 15rem;
+    background-color: #FFF;
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 20px 30px 20px 30px;
+}
+
+.mob-num-text {
+    color: #36256E;
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+.mob-num-inputfield {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mob-num-input {
+    width: 95%;
+    border-radius: 5px;
+    border: 1px solid #BDBDBD;
+    height: 30px;
+}
+
+.mob-num-text1 {
+    color: #36256E;
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    padding-left: 5px;
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.mob-num-Button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mob-num-button {
+    height: 40px;
+    width: 95%;
+    border-radius: 10px;
+    background-color: #E73493;
+    border: none;
+    color: #FFF;
+    margin-top: 25px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+/* ----------------------------------------mobile otp------------------------------------------------------------- */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+/* body {
+    margin: 0%;
+    padding: 0%;
+    font-family: 'Poppins', sans-serif;
+    background-color: #36256E;
+} */
+
+.otp-screen {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    color: #FFF;
+}
+
+.otp-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 15%;
+    width: 100%;
+}
+
+.otp-titlename {
+    color: #FFF;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.otp-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    gap: 10px;
+}
+
+.otp-login-logo {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    gap: 10px;
+    align-items: center;
+}
+
+.otp-login-text {
+    color: #FFF;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.otp-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* height: 85%; */
+}
+
+.otp-body-text {
+    color: #FFF;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.otp-container {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    width: 15rem;
+    background-color: #FFF;
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 0px 30px 15px 30px;
+}
+
+
+.otp-back {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.otp-back-text {
+    color: #36256E;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.otp-text {
+    color: #36256E;
+    display: flex;
+    margin-bottom: 20px;
+    padding-left: 5px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.otp-text1 {
+    color: #36256E;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    padding-left: 5px;
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.otp-Button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.otp-button {
+    height: 40px;
+    width: 95%;
+    border-radius: 10px;
+    background-color: #E73493;
+    border: none;
+    color: #FFF;
+    margin-top: 25px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.otp-field {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+/* .otp-result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    margin-top: 5px;
+    margin-bottom: 5px;
+} */
+/* ------------------------------------------checkout page-------------------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+.policy-select-ckt {
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.slider-coverage-div {
+    display: flex;
+    justify-content: center;
+}
+
+.range-slider {
+    -webkit-appearance: none;
+    width: 30%;
+    height: 10px;
+    border-radius: 5px;
+    background: #fff;
+    /* background:linear-gradient(to right,#E73493 1%,#fff 0%); */
+    outline: none;
+    /* transition: background 0.2s; */
+}
+
+.slider-coverage-div.focused .range-slider {
+    background: linear-gradient(to right, pink, #fff 0%);
+}
+
+
+.range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /* appearance: none; */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    /* box-shadow: -10px 0 0 10px #E73493; */
+    /* border: 4px solid #fff; */
+    /* padding: 3%; */
+    background-image: radial-gradient(circle, #fff 40%, #E73493 45%);
+    cursor: pointer;
+    /* transition: background 0.2s; */
+    /* Add a smooth transition effect on the background color */
+}
+
+/* .range-slider::-ms-track {
+    background: linear-gradient(to right, #E73493);
+} */
+.radio {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    accent-color: #E73493;
+    margin-right: 3px;
+}
+
+.slider-coverage {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.coverage-amt {
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.price {
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.lakh-txt {
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.plan {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.plan1 {
+    width: 270px;
+    height: fit-content;
+    background-color: #FFF;
+    margin-right: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px 0px rgba(231, 52, 147, 0.25);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.plan2 {
+    width: 270px;
+    height: fit-content;
+    background-color: #FFF;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px 0px rgba(231, 52, 147, 0.25);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.plan-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-left: 20px;
+    height: 100%;
+}
+
+.select-plan {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    width: 60%;
+    justify-content: start;
+}
+
+.plan-name {
+    color: #36256E;
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+.coverage {
+    color: #36256E;
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.see-coverage {
+    color: #1290D6;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.plan-spec {
+    display: flex;
+    flex-direction: column;
+    color: #36256E;
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.plan-amount {
+    display: inline-flex;
+    color: #36256E;
+    font-size: 16px;
+    font-weight: 500;
+    align-items: center;
+    letter-spacing: 0.5px;
+}
+
+.per-month {
+    color: #36256E;
+    font-size: 8px;
+    font-weight: 500;
+}
+
+.waiting-period {
+    display: flex;
+    flex-direction: row;
+}
+
+.quick-evaluation {
+    display: flex;
+    flex-direction: row;
+}
+
+.approval {
+    display: flex;
+    flex-direction: row;
+}
+
+.plan-spec-text {
+    padding: 3px;
+    margin: 1px;
+}
+
+.plan-spec-img {
+    margin-right: 5px;
+}
+
+.payment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.payment-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: fit-content;
+    width: 590px;
+    padding: 10px;
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 10px 30px 0px rgba(231, 52, 147, 0.25);
+    justify-content: space-between;
+}
+
+.gst {
+    color: #36256E;
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: 2px;
+}
+
+.plan-details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    width: 40%;
+    gap: 2px;
+    justify-content: space-around;
+}
+
+.proceed-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 50%;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.view-details {
+    color: #36256E;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration-line: underline;
+}
+
+.proceed-button {
+    padding: 10px;
+    width: 65%;
+    border: none;
+    border-radius: 10px;
+    background: #E73493;
+    box-shadow: 0px 10px 30px 0px rgba(231, 52, 147, 0.25);
+    color: #FFF;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 650px) {
+
+    .plan {
+        flex-direction: column;
+    }
+
+    .plan1,
+    .plan2 {
+        flex-direction: column;
+    }
+
+    .plan1 {
+        margin-right: 0%;
+        margin-bottom: 40px;
+    }
+
+    .proceed-container {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width:576px) {
+
+    .background {
+        background: #36256E;
+        height: -webkit-fill-available;
+    }
+
+    #ins-content {
+        font-size: 24px;
+    }
+
+    .insurance-img {
+        width: 28.29px;
+        height: 60px;
+        padding-top: 14%;
+    }
+
+    .ins-cont-div {
+        width: 80%;
+    }
+
+    .insurance-txt {
+        font-size: 18px;
+
+    }
+
+    .ins-log-div {
+        margin-right: 30px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    #sub-content {
+        font-size: 16px;
+    }
+
+    .all-insurance-logos {
+        display: flex;
+        margin-left: 20px;
+        gap: 40px;
+        justify-content: flex-start;
+    }
+
+    .logos {
+        width: 30px;
+        height: 30px;
+        /* margin-top: 15px; */
+    }
+
+    .logos-health {
+        width: 30px;
+        height: 30px;
+        /* margin-top: 15px; */
+    }
+
+    #stepper-container-div {
+        width: 230px;
+
+    }
 }

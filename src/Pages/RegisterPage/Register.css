@@ -119,6 +119,7 @@ input::placeholder {
     align-items: center;
     border: none;
     border-radius: 8px;
+    margin-top: 5px;
     margin-bottom: 10px;
 }
 
