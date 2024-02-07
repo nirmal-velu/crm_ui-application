@@ -5,7 +5,7 @@ import Famdetails from './FamilyDetailsPage/FamilyDetails';
 const Stepper3: React.FC = () => {
   return (
     <>
-      <div className='container-fluid background'>
+      <div className='container-fluid background-div'>
         <Stepper />
         <Famdetails />
       </div>

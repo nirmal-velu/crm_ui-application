@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import tick from '../assets/Group (3).svg'
 import Add from '../assets/plus.png'
 import minus from '../assets/minus.png'
-import axios from 'axios';
-import StepperMobile from './Steppermobile';
-import StepperOtp from './stepperotp';
 import Stepper from './Stepper';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../App';
 
 
 interface Stepper1Props {
@@ -18,7 +16,6 @@ interface FormData {
     self: any;
     spouse: any;
     children: number;
-    // familyMembers: string;
     ageOfElderParent: number;
     ageOfElderParentInLaw: number;
     ageOfElder: number;
@@ -28,9 +25,7 @@ interface FormData {
 }
 
 const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
-    // const [currentStep, setCurrentStep] = useState(0);
-    const [nextForm, setNextForm] = useState(false);
-    const [currentForm, setCurrentForm] = useState(true);
+
     const [self, setSelf] = useState(true);
     const [condition, setCondition] = useState(true);
     const [lawscondition, setLawsCondition] = useState(true);
@@ -39,10 +34,8 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
     const [count1, setCount1] = useState(0);
     const [count2, setCount2] = useState(0);
     const [spouse, setSpouse] = useState(true);
-    // const [state,setState]=useState(false);
-    const [formSubmitted, setFormSubmitted] = useState(false);
     const navigate = useNavigate();
-    // const [childrenCount, ChildrenCount] = useState(0)
+    const state = useContext(UserContext);
     const [formData, setFormData] = useState<FormData>({
         self: false,
         spouse: false,
@@ -58,7 +51,7 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
 
     useEffect(() => {
         console.log('Refreshing data:', count, count1, count2, formData);
-    }, [formData]); // Only re-run the effect if count or formData changes
+    }, [formData]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -129,7 +122,6 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
         const { value } = e.target;
         setFormData((prevState) => {
             const updatedCategory = [...(prevState[category] || [])]
-            // If the value is an empty string, remove the element at the specified index
             if (value === '') {
                 updatedCategory.splice(index, 1);
             } else {
@@ -165,27 +157,7 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
         });
         setSpouse(true);
     }
-    // const handlechildrenfun = () => {
 
-    //     setCount((count) => count + 1)
-    //     setChildren(false)
-    //     setFormData({
-    //         ...formData,
-    //         children: count,
-    //     });
-    // console.log("form data:"  ,formData)
-    // }
-    // console.log(count)
-
-    // const handleAdd = () => {
-    //     setCount1(1);
-    //     setCondition(false)
-    // }
-
-    // const handleLaws = () => {
-    //     setCount2(1);
-    //     setLawsCondition(false)
-    // }
 
     const generateInputFields = (category: keyof FormData, count: number) => {
         const inputFields: JSX.Element[] = [];
@@ -235,52 +207,27 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
         }
         return parentinlaw;
     };
-    // const updateMobileNumber = (data: number) => {
-    //     // Update the mobile number in the form data
-    //     console.log(data)
-    //     setFormData((prevFormData) => ({
-    //         ...prevFormData,
-    //         phoneNumber: data,
-    //     }));
-    //     console.log(formData.phoneNumber);
-    // };
-
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const updatedFormData: FormData = {
             ...formData
         };
-        // setCurrentForm(false)
-        // setNextForm(true)
+        state.setS1state('false');
         navigate('/steppermobile', { state: { formData } });
     }
-    //     try {
-    //         const response = await axios.post('http://localhost:1301/api/getQuote/generate', updatedFormData);
-
-    //         // Handle the response if needed
-    //         console.log('Backend response:', response.data);
-    //     } catch (error) {
-    //         // Handle error
-    //         console.error('Error sending data to the backend:', error);
-    //     }
-
-    //     console.log('Form Data:', updatedFormData);
-    // };
-
 
     return (
         <>
-            <div className='container-fluid background'>
+            <div className='container-fluid background-div'>
                 <Stepper />
-
                 <form onSubmit={handleSubmit} >
-                    <div className='familyMembers d-flex justify-content-center  p-3 mb-3 mt-xxl-4'>
+                    <div className='familyMembers d-flex justify-content-center  p-3 pb-5  pt-xxl-4'>
                         <label htmlFor="familyMembers">Who in your family needs coverage?</label>
                     </div>
                     <div id='stepper-container-div'>
                         <div className='sub-div'>
-                            <div className='d-flex mx-3 mb-2 justify-content-between'>
+                            <div className='d-flex px-3 pb-2 justify-content-between'>
                                 <div className='txt-design'>
                                     self
                                 </div>
@@ -293,7 +240,6 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
                             </div>
                             <div className='d-flex mx-3 mb-3 justify-content-between'>
                                 <label htmlFor='children' className='txt-design'>children</label>
-                                {/* {children ? (<span className='add-txt' onClick={handlechildrenfun}>Add</span>) : */}
                                 {children ? (
                                     <div>
                                         {count === 0 ? (
@@ -317,7 +263,6 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
                                     type="number"
                                     name="ageOfElder"
                                     id="ageOfElder"
-                                    // value={formData.ageOfElder}
                                     onChange={handleChange}
                                     required
                                     className='form-control ms-5'
@@ -327,8 +272,6 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
                             <div className='d-flex mx-3 mb-3 justify-content-between'>
                                 <label htmlFor="parents" className='txt-design'>parents</label>
                                 {condition ? (
-                                    //     <div className='add-txt' onClick={handleAdd}>Add</div>
-                                    // ) : (
                                     <div>
                                         {count1 === 0 ? (
                                             <div className='add-txt' onClick={() => handleButtonClick('add')}>Add</div>
@@ -344,16 +287,13 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
                             <div className='d-flex mx-3 mb-3 justify-content-between'>
                                 <label htmlFor="parentInLaws" className='txt-design'>Parent - in - laws</label>
                                 {lawscondition ?
-                                    // (<div className='add-txt' onClick={handleLaws}>Add</div>) :
                                     (
                                         <div>
                                             {count2 === 0 ? (
                                                 <div className='add-txt' onClick={() => handleButton('add')}>Add</div>
                                             ) :
                                                 (<div>
-                                                    {/* <button type="button" > */}
                                                     <img onClick={() => handleButton('remove')} src={minus} className='add-img pe1' />
-                                                    {/* </button> */}
                                                     <span className=''>{` ${count2.toString().padStart(2, '0')} `}</span>
                                                     <img onClick={() => handleButton('add')} src={Add} className='add-img' />
 
@@ -371,8 +311,8 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
                             </div>
                         </div>
                     </div>
-                    <div className='d-flex justify-content-center p-4 pt-xxl-5'>
-                        <footer className='d-flex footer-div mt-xxl-5' >
+                    <div className='d-flex justify-content-center p-4 pt-xxl-4'>
+                        <footer className='d-flex footer-div mt-xxl-3' >
                             <a ><pre > About Us  |</pre></a>
                             <a> <pre>  Terms & Conditions |</pre></a>
                             <a><pre>  Privacy Policy</pre></a>
@@ -380,7 +320,6 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
                     </div>
                 </form >
 
-                {/* <StepperMobile/> */}
             </div>
         </>
     );

@@ -4,7 +4,7 @@ import Stepper from './Stepper';
 const Stepper4: React.FC = () => {
   return (
     <>
-      <div className='container-fluid background'>
+      <div className='container-fluid background-div'>
         <Stepper />
         <div>
           hello

@@ -1,6 +1,6 @@
 import React, { FormEvent } from "react";
 import insurance from "../assets/insurance.svg";
-import "../LandingPage/LandingPage.css";
+import "../css/LandingPage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -9,7 +9,7 @@ import AuthService from "../service/authservice";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 
-interface Props {}
+interface Props { }
 
 const ForgotPassword: React.FC<Props> = () => {
   const [emailId, setEmailId] = useState<any>("");
@@ -100,7 +100,7 @@ const ForgotPassword: React.FC<Props> = () => {
 
   return (
     <>
-      <div id="login-container-id">
+      <div className="login-container-id">
         <div className="left-container">
           <form onSubmit={handleSubmit}>
             <div className="login-page-div">
@@ -169,7 +169,7 @@ const ForgotPassword: React.FC<Props> = () => {
         </div>
 
         <div className="right-container">
-        <Snackbar
+          <Snackbar
             open={error || successMessage !== null}
             autoHideDuration={3000} // Adjust the duration (in milliseconds) as needed
             onClose={handleClose}

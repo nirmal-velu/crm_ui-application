@@ -1,6 +1,6 @@
 import React, { FormEvent } from "react";
 import insurance from "../assets/insurance.svg";
-import "../LandingPage/LandingPage.css";
+import "../css/LandingPage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";

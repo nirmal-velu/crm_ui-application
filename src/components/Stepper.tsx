@@ -1,92 +1,115 @@
-import React, { useState, ReactElement, ReactNode, useEffect } from "react";
-import '../components/Stepper.css'
+import React, { useState, ReactElement, ReactNode, useEffect, useContext } from "react";
+import '../css/Stepper.css'
 import insurance from '../assets/insuranceLogo.svg'
 import login from '../assets/login-logo.png'
-import { useLocation, useNavigate } from "react-router-dom";
-import Stepper1 from "./Stepper1";
-import Stepper2 from "./Stepper2";
+import { Link, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { UserContext } from "../App";
+
 
 
 interface StepperProps {
-  // components: React.ComponentType<any>[];
+  onPrev?: () => void;
+  onNext?: () => void;
 }
+
 const Stepper: React.FC<StepperProps> = () => {
   const [currentStep, setCurrentStep] = useState(0)
   const location = useLocation()
   const navigate = useNavigate()
-  // const stepsCount = list.length;
   const steps: ReactNode[] = [];
   const steps1: ReactNode[] = [];
   const stepsArray = ['Quote', 'Checkout', 'Health Info', 'Approval'];
-
-  const route = location.pathname;
-
-
+  const states = useContext(UserContext)
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   useEffect(() => {
-    const storedStep = localStorage.getItem("currentStep");
-    if (storedStep) {
-      setCurrentStep(parseInt(storedStep, 10));
-    }
+    switch (location.pathname) {
+      case '/stepperlist':
+        setCurrentStep(0);
+        console.log("step 1")
+        break;
 
-    if (location.pathname === '/stepperlist') {
-      setCurrentStep(0)
+      case '/checkout':
+        setCurrentStep(1);
+        console.log("step 2")
+        break;
+
+      case '/healthinfo':
+        setCurrentStep(2);
+        console.log("step 3")
+        break;
+
+      case '/approval':
+        setCurrentStep(3);
+        console.log("step 4")
+        break;
+      default:
+        break;
     }
-    else if (location.pathname === '/checkout') {
-      setCurrentStep(1)
-    }
-    else if (location.pathname === '/healthinfo') {
-      setCurrentStep(2)
-    }
-    else if (location.pathname === '/approval') {
-      setCurrentStep(3)
-    }
-  }, []); // Empty dependency array to run the effect only once when the component mounts
+  }, [location.pathname]);
 
 
   const handleStepClick = (stepIndex: number) => {
-    setCurrentStep(stepIndex);
-    localStorage.setItem("currentStep", stepIndex.toPrecision());
-    setCurrentStep(stepIndex)
+
     switch (stepIndex) {
       case 0:
         navigate('/stepperlist');
         break;
       case 1:
-        navigate('/checkout');
+        if (states.s1state === 'true') {
+          navigate('/checkout');
+          console.log(states.s1state)
+        }
         break;
       case 2:
-        navigate('/healthinfo');
+        if (states.s2state === 'true') {
+          navigate('/healthinfo');
+          console.log(states.s2state)
+        }
         break;
       case 3:
-        navigate('/approval');
+        if (states.s3state === 'true') {
+          navigate('/approval');
+          console.log(states.s3state)
+
+        }
         break;
       default:
         break;
     }
-    console.log(stepIndex + "step index")
 
   };
+  const handleFocus = (i: number) => {
+    const indicatorElement = document.getElementById("indicator");
+    if (indicatorElement) {
+      indicatorElement.classList.remove('backgroundColor');
+    }
+  };
 
-  console.log(handleStepClick + "index step")
 
   for (let i = 0; i < 4; i++) {
+    const backgroundColor = localStorage.getItem('activeStepBackgroundColor') || 'null';
     steps.push(
       <div
         id="indicator"
+        onFocus={() => handleFocus(i)}
         onClick={() => handleStepClick(i)}
-        className={`steps ${currentStep >= i ? "actives" : ""}`}
+        className={`steps ${currentStep >= i ? "actives" : ""} `}
+        style={{ backgroundColor: states.colorStep !== undefined && states.colorStep >= i ? backgroundColor : '' }}
+        data-step={i}
         key={i}
       >
       </div>
-
     );
-  } console.log(currentStep + "current step")
+  }
+
   for (let i = 0; i < 4; i++) {
+    const backgroundColor = localStorage.getItem('activeStepBackgroundColor') || 'null';
     steps1.push(
       <div
         onClick={() => handleStepClick(i)}
         className={`steps1 ${currentStep >= i ? "active" : ""}`}
+        style={{ color: states.colorStep !== undefined && states.colorStep >= i ? backgroundColor : '' }}
         key={i}
       >{stepsArray[i]}
       </div>
@@ -102,40 +125,26 @@ const Stepper: React.FC<StepperProps> = () => {
     if (currentStep !== 4 - 1) {
       setCurrentStep(currentStep + 1);
     }
+    console.log(currentStep + "currentStep")
   };
-  const indicator = document.getElementById('indicator')
-  const setCurrent = (num: any) => {
-    setCurrentStep(num)
-  }
+
   return (
     <>
-      <div className="container-fluid stepper">
-        <div className=" d-flex py-2 py-xxl-4  justify-content-between align-items-center  " >
-          <div className="col-auto ">
+      <div className={`container-fluid stepper ${formSubmitted ? 'form-submitted-bg' : ''}`}>
+        <div className="row d-flex p-2 justify-content-between align-items-center mt-xxl-3" >
+          <div className="col-auto ms-2">
             <img className='me-3' src={insurance} /><span className='insurance-txt'>Insurance Company</span>
           </div>
-          <div className="col-auto">
-            <span className='login-txt me-2' >Login</span> <img className='login-img' src={login} />
+          <div className="col-auto me-2">
+            <span className='login-txt' >Login</span> <img className='login-img' src={login} />
           </div>
         </div>
-        {/* <div className='otp-header'>
-          <div className='otp-title'>
-            <img src='group1.svg' width="38" height="45" className='logo'></img>
-            <p className='otp-titlename'>Insurance Company</p>
-          </div>
-          <div className='otp-login-logo '>
-            <p className='otp-login-text'>Login</p>
-            <img src='login-logo.svg' width="30" height="30" className='logo'></img>
-          </div>
-        </div> */}
-        <div className="steps-container mt-4 mt-xxl-5">
+        <div className="steps-container pt-4 mt-xxl-5">
           <div className="steps-wrapper progress-line">{steps}</div>
         </div>
 
-        <div className="steps1 mt-3">{steps1}</div>
-        {/* <div>{React.createElement(components[currentStep])}</div> */}
+        <div className="steps1 pt-3">{steps1}</div>
 
-        {/* <div>{React.cloneElement(list[currentStep], { onPrev, onNext } )}</div> */}
       </div>
     </>
   );

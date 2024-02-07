@@ -1,15 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat+Alternates:wght@500&family=Poppins:wght@400;600&family=Roboto+Flex:opsz,wght@8..144,200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@700&family=Inter&family=Montserrat+Alternates:wght@500&family=Poppins:wght@400;600&family=Roboto+Flex:opsz,wght@8..144,200&display=swap');
 
-body {
-    height: 100%;
-    font-family: 'Poppins', sans-serif;
-}
 
-#container-div {
-    /* background-color: #36256E; */
+.linear {
     background: linear-gradient(to bottom, #36256E 50%, #FFF 50%);
-
+    padding: 0;
 }
 
 .ins-log-div {
@@ -59,7 +54,6 @@ body {
     font-size: 12px;
     font-weight: 400;
     line-height: 18px;
-    letter-spacing: 0em;
     text-align: left;
     color: #FFFFFF;
     cursor: pointer;
@@ -76,8 +70,9 @@ body {
     flex-direction: column;
     /* justify-content: center; */
     align-items: flex-start;
-    /* width: 40%; */
+    /* width: 60%; */
     margin: auto;
+    margin-top: 20%;
 }
 
 #ins-content {
@@ -87,9 +82,6 @@ body {
     font-style: normal;
     font-weight: 700;
     line-height: 60px;
-    margin-top: 40px;
-    margin-bottom: 0px;
-    /* 142.857% */
 }
 
 #sub-content {
@@ -108,15 +100,10 @@ body {
     /* position: absolute;
     z-index: 1; */
     /* width: 100%; */
-    margin-top: 30px;
-    bottom: 45%;
+    margin-top: 11%;
+    /* bottom: 45%; */
     gap: 38px;
 }
-
-/* #car-img {
-    width: 70px;
-    height: 70px;
-} */
 
 .logos {
     background-color: #FFFFFF;
@@ -167,7 +154,8 @@ body {
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-    margin-top: 40px;
+    margin-top: 5%;
+    margin-bottom: 11%;
 
 }
 
@@ -185,8 +173,7 @@ body {
 .footer {
     display: flex;
     justify-content: center;
-    margin-top: 100px;
-
+    margin-top: 7%;
     color: #36256E;
     text-align: center;
     font-family: Poppins;
@@ -207,13 +194,19 @@ mobile 319-480 */
 
 /* ---------------------------------------------------Login Page-------------------------------------------------------- */
 
-#login-container-id {
+.login-container-id {
     display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .left-container {
-    width: 35%;
+    display: flex;
     height: 100vh;
+    flex: 2;
+    flex-direction: column;
+    background-color: white;
 }
 
 .login-page-div {
@@ -382,19 +375,24 @@ input[type="number"] {
 /* -----------------------------------------login page right side-------------------------------------------------------- */
 
 .right-container {
-    width: 65%;
+    display: flex;
     height: 100vh;
+    flex-direction: column;
+    flex: 4;
     background-color: #36256E;
+    /* overflow-y: auto; */
+    /* justify-content: end; */
 }
 
 .login-content-div {
     display: flex;
     justify-content: center;
-    margin-top: 145px;
+    margin-top: 30%;
 }
 
 .align-content-div {
     display: flex;
+    justify-content: center;
     width: 60%;
     flex-direction: column;
     align-items: flex-start;
@@ -409,11 +407,13 @@ input[type="number"] {
 
 .phone-img-div {
     display: flex;
+    width: 100%;
+    margin-top: 11.5%;
+    align-items: end;
     justify-content: flex-end;
 }
 
 #phone-img {
-    width: 62%;
     height: 200px;
     /* margin-top: 8%; */
 }
@@ -509,11 +509,12 @@ input[type="number"] {
     height: 100vh;
     overflow: hidden
 } */
+
 #stepper-container-div {
     background: #36256E;
     width: 430px;
-    height: 40vh;
-    max-height: 55vh;
+    height: 50vh;
+    max-height: 45vh;
     border-radius: 10px;
     background: #FFF;
     box-shadow: 0px 10px 30px 0px rgba(231, 52, 147, 0.25);
@@ -528,7 +529,7 @@ input[type="number"] {
     max-height: 50vh;
     overflow: hidden;
     overflow-y: scroll;
-    scrollbar-width: thin;
+    /* scrollbar-width: thin; */
     -ms-overflow-style: none;
 
 }
@@ -547,14 +548,15 @@ input[type="number"] {
     justify-content: space-between;
 }
 
-.background {
+.background-div {
     background: #36256E;
     height: 100vh;
+    overflow-y: auto;
 }
 
 .familyMembers {
     color: #FFF;
-
+    text-align: center;
     font-family: Poppins;
     font-size: 22px;
     font-style: normal;
@@ -608,7 +610,7 @@ input[type="number"] {
     box-shadow: 0px 10px 30px 0px rgba(231, 52, 147, 0.25);
     border: none;
     width: 50%;
-    height: 6vh;
+    height: 40px;
 }
 
 /* .green-rectangle {
@@ -658,60 +660,11 @@ ul {
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
 
-/* body {
-    margin: 0%;
-    padding: 0%;
-    font-family: 'Poppins', sans-serif;
-    background-color: #36256E;
-} */
-
-.mob-num-screen {
-    height: 100vh;
-    width: 100%;
-    color: #FFF;
-    display: flex;
-    flex-direction: column;
-}
-
-.mob-num-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 15%;
-}
-
-.mob-num-titlename {
-    color: #FFF;
-    font-size: 24px;
-    font-weight: 400;
-}
-
-.mob-num-title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 20px;
-    gap: 10px;
-}
-
-.mob-num-login-logo {
-    display: flex;
-    flex-direction: row;
-    padding: 20px;
-    gap: 10px;
-    align-items: center;
-}
-
-.mob-num-login-text {
-    color: #FFF;
-    font-size: 12px;
-    font-weight: 400;
-}
-
 .mob-num-body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
     /* height: 85%; */
 }
 
@@ -725,7 +678,8 @@ ul {
     display: flex;
     flex-direction: column;
     height: fit-content;
-    width: 15rem;
+    width: 17%;
+    min-width: 200px;
     background-color: #FFF;
     border-radius: 10px;
     margin-top: 20px;
@@ -789,61 +743,11 @@ ul {
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
 
-/* body {
-    margin: 0%;
-    padding: 0%;
-    font-family: 'Poppins', sans-serif;
-    background-color: #36256E;
-} */
-
-.otp-screen {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 100%;
-    color: #FFF;
-}
-
-.otp-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 15%;
-    width: 100%;
-}
-
-.otp-titlename {
-    color: #FFF;
-    font-size: 24px;
-    font-weight: 400;
-}
-
-.otp-title {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 20px;
-    gap: 10px;
-}
-
-.otp-login-logo {
-    display: flex;
-    flex-direction: row;
-    padding: 20px;
-    gap: 10px;
-    align-items: center;
-}
-
-.otp-login-text {
-    color: #FFF;
-    font-size: 12px;
-    font-weight: 400;
-}
-
 .otp-body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
     /* height: 85%; */
 }
 
@@ -857,18 +761,19 @@ ul {
     display: flex;
     flex-direction: column;
     height: max-content;
-    width: 15rem;
+    width: 17%;
+    min-width: 220px;
     background-color: #FFF;
     border-radius: 10px;
     margin-top: 20px;
-    padding: 0px 30px 15px 30px;
+    padding: 10px 30px 15px 30px;
 }
 
 
 .otp-back {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: baseline;
     gap: 8px;
 }
 
@@ -989,7 +894,6 @@ ul {
     width: 16px;
     border-radius: 50%;
     accent-color: #E73493;
-    margin-right: 3px;
 }
 
 .slider-coverage {
@@ -1037,7 +941,7 @@ ul {
     margin-right: 40px;
     border-radius: 10px;
     box-shadow: 0px 10px 30px 0px rgba(231, 52, 147, 0.25);
-    padding: 10px;
+    padding: 5px;
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
@@ -1049,7 +953,7 @@ ul {
     background-color: #FFF;
     border-radius: 10px;
     box-shadow: 0px 10px 30px 0px rgba(231, 52, 147, 0.25);
-    padding: 10px;
+    padding: 5px;
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
@@ -1179,7 +1083,7 @@ ul {
     flex-direction: row;
     flex-wrap: wrap;
     width: 50%;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
 }
 
@@ -1203,32 +1107,172 @@ ul {
     font-weight: bold;
 }
 
-@media screen and (max-width: 650px) {
+/* -----------------------------------------policy converage-------------------------------------------------- */
 
-    .plan {
-        flex-direction: column;
-    }
+.policy-contain {
+    width: 98%;
+    position: relative;
+    height: 546px;
+    border-radius: 10px;
+    background-color: #FFF;
+    margin: auto;
+    overflow-y: scroll;
+}
 
-    .plan1,
-    .plan2 {
-        flex-direction: column;
-    }
+.policy-contain::-webkit-scrollbar {
+    display: none;
+}
 
-    .plan1 {
-        margin-right: 0%;
-        margin-bottom: 40px;
-    }
+.custom-toggle-btn {
+    /* background-color: #007BFF; */
+    color: #fff;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
 
-    .proceed-container {
-        flex-direction: column;
+.txt-color {
+    font-family: Poppins;
+    color: #36256E !important;
+}
+
+.nav-fill {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: #36256E;
+    /* margin-left: 45px; */
+
+}
+
+.nav-link {
+    --bs-navbar-nav-link-padding-x: 0;
+}
+
+/* .list-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+} */
+
+.back-contain {
+    display: flex;
+}
+
+/* 
+.list-bar {
+    width: 75%;
+} */
+
+.nav-link:hover {
+    color: #36256E;
+}
+
+.list-nav.active,
+.list-bar.active {
+    /* cursor: pointer; */
+    color: #36256E;
+    font-family: Poppins;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    transform: rotate(-0.521deg);
+    text-underline-offset: 1em;
+    color: #E73493 !important;
+    transition: text-decoration 0.3s ease, font-size 0.3s ease;
+}
+
+.download-receipt-btn {
+    width: 97%;
+}
+
+.download-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 40px;
+    border-radius: 8px;
+    background: #E73493;
+}
+
+.download-txt {
+    color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.policy-name {
+    font-family: Poppins;
+    color: #36256E !important;
+    line-height: 36px;
+    font-weight: 600;
+}
+
+.policy-detail-contain {
+    width: 45%;
+}
+
+.flex {
+    display: flex;
+
+}
+
+.left-policy-contain {
+    flex: 1;
+}
+
+.right-policy-contain {
+    flex: 1;
+}
+
+.title-txt {
+    color: #E73493;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.content-txt {
+    color: #36256E;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.txt-color:hover {
+    cursor: pointer;
+}
+
+.menu-img {
+    width: 24px;
+    height: 24px;
+}
+
+/* --------------------------------------landing page media query--------------------------------------------- */
+
+@media screen and (max-width: 991px) {
+    .menu-bar {
+        position: absolute !important;
+        width: 200px;
+        background: #fff;
     }
 }
 
 @media screen and (max-width:576px) {
 
-    .background {
+    .background-div {
         background: #36256E;
-        height: -webkit-fill-available;
+        /* height: -webkit-fill-available; */
     }
 
     #ins-content {
@@ -1246,7 +1290,7 @@ ul {
     }
 
     .insurance-txt {
-        font-size: 18px;
+        font-size: 14px;
 
     }
 
@@ -1282,5 +1326,38 @@ ul {
     #stepper-container-div {
         width: 230px;
 
+    }
+}
+
+@media screen and (min-width:576px) {
+    .background-div {
+        background: #36256E;
+        /* height: -webkit-fill-available; */
+    }
+
+}
+
+
+@media screen and (max-width: 650px) {
+    /* body {
+        background-color: #36256E;
+    } */
+
+    .plan {
+        flex-direction: column;
+    }
+
+    .plan1,
+    .plan2 {
+        flex-direction: column;
+    }
+
+    .plan1 {
+        margin-right: 0%;
+        margin-bottom: 40px;
+    }
+
+    .proceed-container {
+        flex-direction: column;
     }
 }

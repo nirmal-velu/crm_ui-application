@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './FamilyDetails.css';
+import '../../css/FamilyDetails.css';
 // import 'react-phone-number-input/style.css'
 // import PhoneInput from 'react-phone-number-input'
 

@@ -1,39 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@700&family=Inter&family=Montserrat+Alternates:wght@500&family=Poppins:wght@400;600&family=Roboto+Flex:opsz,wght@8..144,200&display=swap');
 
-/* CircleStepper.css */
-/* 
-.circle-stepper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .step {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 2px solid #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .step.active {
-    border-color: #00f; /* Color for the active step */
-/* }
-  
-  .step.filled {
-    background-color: #0f0; 
-  } */
 
 .stepper {
   background: #36256E;
-  /* height: 100vh; */
-
 }
 
 .selector {
@@ -43,8 +12,6 @@
 }
 
 .steps-container {
-  /* position: relative; */
-  /* background-color: #36256E; */
   display: flex;
   flex-direction: column;
   width: 75%;
@@ -54,13 +21,8 @@
 }
 
 .progress-line {
-  /* position: absolute; */
   height: 2px;
   background: gray;
-  /* width: 100%; */
-  /* top: 50%; */
-  /* left: 0; */
-  /* z-index: -1; */
 }
 
 .wrapper {
@@ -102,7 +64,6 @@
 
 .submitted.steps.active {
   background: #E73493;
-  /* Update with your desired background color */
 }
 
 .steps1.active {

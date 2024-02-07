@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-import './Register.css'
+import '../css/Register.css'
 import axios from 'axios'
+import insurance from '../assets/insuranceLogo.svg';
+import mobileimg from '../assets/mobileLogo.svg'
 
 function Register() {
 
@@ -111,7 +113,7 @@ function Register() {
             <div className='container1'>
                 <div className='first-section'>
                     <div className='header'>
-                        <img src='Group.svg' width="38" height="45"></img>
+                        <img src={insurance} width="38" height="45"></img>
                         <h1>Insurance Company</h1>
                     </div>
                     <div className='reg-form'>
@@ -240,7 +242,7 @@ function Register() {
                         <h3>Hassle-free claims</h3>
                     </div>
                     <div className='image1'>
-                        <img src='Group 1000004714.svg' width="350" height="250" ></img>
+                        <img src={mobileimg} width="350" height="250" ></img>
                     </div>
                 </div>
             </div>
