@@ -66,8 +66,23 @@
   background: #E73493;
 }
 
+.steps1 {
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
 .steps1.active {
   color: #E73493;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: center;
 }
 
 .remove-txt {

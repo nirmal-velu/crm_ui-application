@@ -1,9 +1,9 @@
 import React, { useState, ReactElement, ReactNode, useEffect, useContext } from "react";
-import '../css/Stepper.css'
-import insurance from '../assets/insuranceLogo.svg'
-import login from '../assets/login-logo.png'
+import '../../css/Stepper.css'
+import insurance from '../../assets/insuranceLogo.svg'
+import login from '../../assets/login-logo.png'
 import { Link, Route, Routes, useLocation, useNavigate } from "react-router-dom";
-import { UserContext } from "../App";
+import { UserContext } from "../../App";
 
 
 
@@ -48,6 +48,7 @@ const Stepper: React.FC<StepperProps> = () => {
     }
   }, [location.pathname]);
 
+  const handleLogin = () => navigate('/login');
 
   const handleStepClick = (stepIndex: number) => {
 
@@ -108,7 +109,7 @@ const Stepper: React.FC<StepperProps> = () => {
     steps1.push(
       <div
         onClick={() => handleStepClick(i)}
-        className={`steps1 ${currentStep >= i ? "active" : ""}`}
+        className={`steps1 ${currentStep == i ? "active" : ""}`}
         style={{ color: states.colorStep !== undefined && states.colorStep >= i ? backgroundColor : '' }}
         key={i}
       >{stepsArray[i]}
@@ -133,10 +134,10 @@ const Stepper: React.FC<StepperProps> = () => {
       <div className={`container-fluid stepper ${formSubmitted ? 'form-submitted-bg' : ''}`}>
         <div className="row d-flex p-2 justify-content-between align-items-center mt-xxl-3" >
           <div className="col-auto ms-2">
-            <img className='me-3' src={insurance} /><span className='insurance-txt'>Insurance Company</span>
+            <img className='me-3' src={insurance} alt="Logo" /><span className='insurance-txt'>Insurance Company</span>
           </div>
           <div className="col-auto me-2">
-            <span className='login-txt' >Login</span> <img className='login-img' src={login} />
+            <span className='login-txt' onClick={handleLogin}>Login</span> <img className='login-img' src={login} alt="Icon" onClick={handleLogin} />
           </div>
         </div>
         <div className="steps-container pt-4 mt-xxl-5">

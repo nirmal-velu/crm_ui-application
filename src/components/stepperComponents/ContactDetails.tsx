@@ -2,15 +2,12 @@ import axios from 'axios';
 import React from 'react'
 import Stepper from './Stepper';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { CLIENT_RENEG_LIMIT } from 'tls';
-import Stepper1 from './Stepper1';
-
 
 const StepperMobile = () => {
     const location = useLocation();
     const formData = location.state?.formData;
     const currentStep = location.state?.currentStep;
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     console.log(formData)
     console.log(currentStep)
 

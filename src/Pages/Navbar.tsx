@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
-import '../css/LandingPage.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import InsuranceCoverage from './InsuranceCoverage';
 import backArrow from '../assets/backarrow.svg'
-import menu from '../assets/menu-icon.jpg'
-import PolicyDetails from '../components/PolicyDetails';
-import ProfileDetails from '../components/ProfileDetails';
+import menu from '../assets/menu-icon.png'
+import { useNavigate } from 'react-router-dom';
+import NetworkHospitals from '../components/navbarComponents/NetworkHospital';
+import PaymentHistory from '../components/navbarComponents/PaymentHistory';
+import ProfileDetails from '../components/navbarComponents/ProfileDetails';
+import PolicyDetails from '../components/navbarComponents/PolicyDetails';
+import HealthCard from '../components/navbarComponents/HealthCard';
+import '../css/LandingPage.css';
+
 type Props = {};
 
 const Navbar = (props: Props) => {
+
+  const navigate = useNavigate();
+
   const [activeLink, setActiveLink] = useState(Number);
-  const [isNavCollapsed, setIsNavCollapsed] = useState(false);
+  const [isNavCollapsed, setIsNavCollapsed] = useState(true);
   enum navigation {
     policyDetails,
     profileDetails,
@@ -22,6 +30,15 @@ const Navbar = (props: Props) => {
   }
   console.log(typeof (navigation.policyDetails))
 
+  const handleBack = () => {
+    if (activeLink === 0) {
+      navigate('/dashboard');
+    }
+    else {
+      setActiveLink(activeLink - 1);
+    }
+  }
+
   const handleLinkClick = (value: any) => {
     console.log(value + "data")
     setActiveLink(value);
@@ -30,30 +47,39 @@ const Navbar = (props: Props) => {
 
   };
 
+  const handleToggleClick = () => {
+    setIsNavCollapsed(!isNavCollapsed);
+  };
+  console.log(setIsNavCollapsed + "nav collapsed")
+
   const renderedComponents = () => {
     switch (activeLink) {
       case 0:
-        return <PolicyDetails />
+        return <PolicyDetails isNavCollapsed={isNavCollapsed} />
       case 1:
-        return <ProfileDetails />
-      default:
-      // return <PolicyDetails />
-
+        return <ProfileDetails isNavCollapsed={isNavCollapsed} />
+      case 2:
+        return <PaymentHistory isNavCollapsed={isNavCollapsed} />
+      case 3:
+        return <HealthCard />
+      case 4:
+        return <NetworkHospitals isNavCollapsed={isNavCollapsed} />
+      // default:
+      //   return <PolicyDetails isNavCollapsed={isNavCollapsed} />
     }
-
   }
 
   return (
     <>
       <div className="container-fluid background-div">
         <InsuranceCoverage />
-        <div className='policy-contain mt-lg-3 mt-xxl-5 mb-5 p-2'>
+        <div className={`policy-contain mt-4 mt-xxl-5 mb-5 p-2`}>
           <div className='d-flex justify-content-between align-items-center'>
-            <div className='d-flex ms-5'>
-              <img src={backArrow} alt="" className='pe-2 dark' />
-              <p className='mt-3 txt-color'>Back</p>
+            <div className='d-flex ms-5 mt-4' onClick={handleBack}>
+              <img src={backArrow} alt="Arrow" className='pe-2 dark' />
+              <p className='txt-color'>Back</p>
             </div>
-            <div className='d-lg-none'>
+            <div className='d-lg-none me-4 mt-3'>
               <button
                 className="navbar-toggler custom-toggle-btn"
                 type="button"
@@ -62,14 +88,13 @@ const Navbar = (props: Props) => {
                 aria-controls="navbarNav"
                 aria-expanded={!isNavCollapsed}
                 aria-label="Toggle navigation"
-                onClick={() => setIsNavCollapsed(!isNavCollapsed)}
-              >
-                <img src={menu} className='menu-img' alt="menu" />
+                onClick={handleToggleClick}                            >
+                <img src={menu} className='menu-img' alt="Menu" />
               </button>
             </div>
           </div>
-          <nav className="navbar navbar-expand-lg navbar-light menu-bar">
-            <div className={`collapse  navbar-collapse ${isNavCollapsed ? '' : 'show'}`} id="navbarNav">
+          <nav className={`navbar mt-4 navbar-expand-lg  ${isNavCollapsed ? '' : 'menu-bar'}`}>
+            <div id="navbarNav" className={`collapse  navbar-collapse  ${isNavCollapsed ? '' : 'show'}`} >
               <ul className="navbar-nav nav-fill mx-5">
                 <li className={`list-nav ${activeLink == navigation.policyDetails ? 'active' : ''}`}>
                   <a className="nav-link  txt-color" onClick={() => handleLinkClick(navigation.policyDetails)} >
@@ -106,6 +131,11 @@ const Navbar = (props: Props) => {
           </nav>
           {renderedComponents()}
         </div>
+        <footer className='nav-footer'>
+          <a ><pre> About Us  |</pre></a>
+          <a> <pre>  Terms & Conditions |</pre></a>
+          <a><pre>  Privacy Policy</pre></a>
+        </footer>
       </div>
     </>
   );

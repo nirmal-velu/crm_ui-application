@@ -3,6 +3,7 @@
 
 
 .linear {
+    height: auto;
     background: linear-gradient(to bottom, #36256E 50%, #FFF 50%);
     padding: 0;
 }
@@ -13,7 +14,6 @@
     width: 95%;
     margin: auto;
 }
-
 
 .insurance-img {
     width: 37.29px;
@@ -28,7 +28,6 @@
 }
 
 .insurance-txt {
-
     color: #FFF;
     font-family: Poppins;
     font-size: 24px;
@@ -46,7 +45,6 @@
     width: 14.6px;
     height: 24px;
     cursor: pointer;
-
 }
 
 .login-txt {
@@ -68,11 +66,9 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: flex-start;
-    /* width: 60%; */
     margin: auto;
-    margin-top: 20%;
+    margin-top: 100px;
 }
 
 #ins-content {
@@ -97,10 +93,7 @@
 .all-insurance-logos {
     display: flex;
     justify-content: center;
-    /* position: absolute;
-    z-index: 1; */
-    /* width: 100%; */
-    margin-top: 11%;
+    margin-top: 35px;
     /* bottom: 45%; */
     gap: 38px;
 }
@@ -116,7 +109,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .logos-health {
@@ -128,7 +120,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .img-logos {
@@ -137,34 +128,29 @@
 }
 
 .logos-text-div {
-    /* display: flex;
-    justify-content: space-around;
-    width: 35%;
-    margin: auto; */
     text-align: center;
     margin-top: 10px;
     color: #36256E;
 }
 
 .quote-div {
-
     text-align: center;
     font-family: Poppins;
     font-size: 18px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-    margin-top: 5%;
-    margin-bottom: 11%;
-
+    margin-top: 50px;
+    margin-bottom: 40px;
 }
 
 #quote-btn {
     width: 213px;
-    height: 45px;
+    height: 40px;
     border-radius: 10px;
     cursor: pointer;
     color: #FFF;
+    border: none;
     border-color: #E73493;
     background: #E73493;
     box-shadow: 0px 10px 30px 0px rgba(231, 52, 147, 0.25);
@@ -173,7 +159,7 @@
 .footer {
     display: flex;
     justify-content: center;
-    margin-top: 7%;
+    margin-top: 170px;
     color: #36256E;
     text-align: center;
     font-family: Poppins;
@@ -182,15 +168,17 @@
     font-weight: 400;
 }
 
-/* 1601-desktop
-1201-1600-laptop
-tab& ipad-481-1200
-mobile 319-480 */
-/* @media screen and (min-width:768px ),(max-height: 601px) {
-  .all-insurance-logos {
-      margin-top: 20px; 
-  }
-} */
+.nav-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+}
 
 /* ---------------------------------------------------Login Page-------------------------------------------------------- */
 
@@ -221,7 +209,7 @@ mobile 319-480 */
 .login-border {
     display: flex;
     flex-direction: row;
-    margin-top: 30px;
+    margin-top: 15%;
     justify-content: center;
     flex-wrap: wrap;
 }
@@ -246,7 +234,7 @@ mobile 319-480 */
 .input-field-div {
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
+    margin-top: 15%;
     width: 80%;
 }
 
@@ -275,7 +263,7 @@ mobile 319-480 */
 }
 
 .password-label {
-    margin-top: 30px;
+    margin-top: 15%;
     color: #4A5568;
     font-family: Poppins;
     font-size: 12px;
@@ -327,7 +315,12 @@ mobile 319-480 */
 
 .Register-div {
     display: flex;
-    margin-top: 50px;
+    margin-top: 20%;
+}
+
+p {
+    margin: 0%;
+    padding: 0%;
 }
 
 #register-account-txt {
@@ -376,7 +369,7 @@ input[type="number"] {
 
 .right-container {
     display: flex;
-    height: 100vh;
+    height: auto;
     flex-direction: column;
     flex: 4;
     background-color: #36256E;
@@ -513,7 +506,7 @@ input[type="number"] {
 #stepper-container-div {
     background: #36256E;
     width: 430px;
-    height: 50vh;
+    height: 60vh;
     max-height: 45vh;
     border-radius: 10px;
     background: #FFF;
@@ -531,7 +524,6 @@ input[type="number"] {
     overflow-y: scroll;
     /* scrollbar-width: thin; */
     -ms-overflow-style: none;
-
 }
 
 .sub-div::-webkit-scrollbar {
@@ -613,18 +605,6 @@ input[type="number"] {
     height: 40px;
 }
 
-/* .green-rectangle {
-    width: 80px;
-    height: 84px;
-    background-color: #32BA7C;
-    border-radius: 50%;
-    /* Create rounded corners */
-/* display: flex; */
-/* Center the cross */
-/* justify-content: center;
-    align-items: center;
-}  */
-
 ul {
     list-style: none;
 }
@@ -679,7 +659,7 @@ ul {
     flex-direction: column;
     height: fit-content;
     width: 17%;
-    min-width: 200px;
+    min-width: 240px;
     background-color: #FFF;
     border-radius: 10px;
     margin-top: 20px;
@@ -694,7 +674,6 @@ ul {
     font-size: 14px;
     font-weight: 400;
 }
-
 
 .mob-num-inputfield {
     display: flex;
@@ -762,7 +741,7 @@ ul {
     flex-direction: column;
     height: max-content;
     width: 17%;
-    min-width: 220px;
+    min-width: 240px;
     background-color: #FFF;
     border-radius: 10px;
     margin-top: 20px;
@@ -775,6 +754,7 @@ ul {
     flex-direction: row;
     align-items: baseline;
     gap: 8px;
+    margin-bottom: 10px;
 }
 
 .otp-back-text {
@@ -1019,16 +999,8 @@ ul {
     font-weight: 500;
 }
 
-.waiting-period {
-    display: flex;
-    flex-direction: row;
-}
-
-.quick-evaluation {
-    display: flex;
-    flex-direction: row;
-}
-
+.waiting-period,
+.quick-evaluation,
 .approval {
     display: flex;
     flex-direction: row;
@@ -1135,6 +1107,7 @@ ul {
 .txt-color {
     font-family: Poppins;
     color: #36256E !important;
+    margin: 0;
 }
 
 .nav-fill {
@@ -1143,18 +1116,11 @@ ul {
     justify-content: space-between;
     color: #36256E;
     /* margin-left: 45px; */
-
 }
 
 .nav-link {
     --bs-navbar-nav-link-padding-x: 0;
 }
-
-/* .list-nav {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-} */
 
 .back-contain {
     display: flex;
@@ -1258,16 +1224,119 @@ ul {
     height: 24px;
 }
 
-/* --------------------------------------landing page media query--------------------------------------------- */
+/* -------------------------------------------------------Payment History------------------------------------------------------ */
 
-@media screen and (max-width: 991px) {
-    .menu-bar {
-        position: absolute !important;
-        width: 200px;
-        background: #fff;
-    }
+/* .custom-table>:not(caption)>*>* {
+    color: rgba(54, 37, 110, 1) !important;
+    padding: 20px 20px 20px 0px !important;
+    border-bottom-width: var(--bs-border-width) !important;
+} */
+
+/* .padd {
+    padding: 20px 0px 20px 0px;
+} */
+
+.last-th {
+    flex-grow: 1;
 }
 
+.table-no-border-bottom tbody td,
+.table-no-border-bottom tbody th {
+    border-bottom: none;
+}
+
+.payment-thead,
+.payment-tdata {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: rgba(54, 37, 110, 1) !important;
+    padding: 20px 20px 20px 0px !important;
+    border-bottom-width: var(--bs-border-width) !important;
+}
+
+.payment-thead-download {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: rgba(54, 37, 110, 1) !important;
+    padding: 0 200px !important;
+    border-bottom-width: var(--bs-border-width) !important;
+}
+
+/* ---------------------------------------------Network Hospitals--------------------------------------------------------------- */
+
+.net-hos-table> :not(caption)>*>* {
+    color: rgba(54, 37, 110, 1) !important;
+    padding: 15px 0px 15px 0px !important;
+    /* Corrected padding values */
+}
+
+
+.net-hos-table th:nth-child(1) {
+    width: 15%;
+}
+
+.net-hos-table th:nth-child(2) {
+    width: 15%;
+}
+
+.net-hos-table th:nth-child(3) {
+    width: 30%;
+}
+
+.net-hos-table th:nth-child(4) {
+    width: 30%;
+}
+
+.net-hos-table th:nth-child(5) {
+    width: 10%;
+}
+
+.bg-col-netHos {
+    background-color: #F0F0F0 !important;
+    width: 80% !important;
+    text-align-last: center;
+    color: #36256E !important;
+}
+
+.custom-dropdown-toggle {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('../assets/dropdown.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 30px;
+}
+
+.search-hospital {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-bar::placeholder {
+    font-size: 16px;
+    color: #36256E80;
+    font-family: Poppins;
+    font-weight: 400;
+    text-align: left;
+}
+
+.hospital-data::-webkit-scrollbar {
+    display: none;
+}
+
+/* --------------------------------------landing page media query--------------------------------------------- */
 @media screen and (max-width:576px) {
 
     .background-div {
@@ -1275,8 +1344,12 @@ ul {
         /* height: -webkit-fill-available; */
     }
 
+    .total-container-div {
+        width: 350px;
+    }
+
     #ins-content {
-        font-size: 24px;
+        font-size: 23px;
     }
 
     .insurance-img {
@@ -1291,11 +1364,11 @@ ul {
 
     .insurance-txt {
         font-size: 14px;
+        transition: font size 1s ease;
 
     }
 
     .ins-log-div {
-        margin-right: 30px;
         display: flex;
         justify-content: space-around;
     }
@@ -1306,21 +1379,28 @@ ul {
 
     .all-insurance-logos {
         display: flex;
-        margin-left: 20px;
-        gap: 40px;
+        margin-left: 30px;
+        gap: 20px;
         justify-content: flex-start;
     }
 
     .logos {
-        width: 30px;
-        height: 30px;
-        /* margin-top: 15px; */
+        width: 40px;
+        height: 40px;
     }
 
     .logos-health {
-        width: 30px;
-        height: 30px;
-        /* margin-top: 15px; */
+        width: 40px;
+        height: 40px;
+    }
+
+    .img-logos {
+        margin: 3px;
+    }
+
+    .img-logos-sign {
+        margin: 8px;
+        overflow: auto;
     }
 
     #stepper-container-div {
@@ -1329,19 +1409,41 @@ ul {
     }
 }
 
-@media screen and (min-width:576px) {
-    .background-div {
-        background: #36256E;
-        /* height: -webkit-fill-available; */
+@media screen and (min-width:577px) and (max-width:768px) {
+    #ins-content {
+        font-size: 27px;
     }
 
+    #sub-content {
+        font-size: 16px;
+    }
+
+    .all-insurance-logos {
+        gap: 20px;
+    }
+
+    .logos {
+        width: 50px;
+        height: 50px;
+    }
+
+    .logos-health {
+        width: 50px;
+        height: 50px;
+    }
+
+    .quote-div {
+        margin-bottom: 110px;
+    }
+
+    .total-container-div {
+        width: 330px;
+    }
 }
 
+/* ----------------------------------------checkout page media query------------------------------------------------------- */
 
 @media screen and (max-width: 650px) {
-    /* body {
-        background-color: #36256E;
-    } */
 
     .plan {
         flex-direction: column;
@@ -1349,15 +1451,81 @@ ul {
 
     .plan1,
     .plan2 {
-        flex-direction: column;
+        width: 250px;
     }
 
     .plan1 {
         margin-right: 0%;
-        margin-bottom: 40px;
+        margin-bottom: 30px;
+    }
+
+    .plan2 {
+        margin-bottom: 10px;
     }
 
     .proceed-container {
         flex-direction: column;
+    }
+
+    .payment-container {
+        width: 250px;
+        margin-bottom: 10px;
+    }
+}
+
+/* ---------------------------------policy details and profile details component media query------------------------------------- */
+
+
+@media screen and (max-width: 576px) {
+
+    .policy-contain {
+        margin-top: 3%;
+    }
+
+    .ins-img-background {
+        width: 24px;
+        margin-top: 2%;
+    }
+
+    .login-img {
+        width: 13.6px;
+        height: 20px;
+        cursor: pointer;
+    }
+
+}
+
+/* --------------------------------navbar page media query--------------------------------------------------------------- */
+
+@media screen and (max-width:724px) {
+    .flex {
+        flex-direction: column;
+    }
+
+    .policy-detail-contain {
+        width: 100%;
+    }
+
+    .download-box {
+        width: 120px;
+    }
+
+}
+
+@media screen and (max-width:991px) {
+    .blur {
+        filter: blur(5px);
+        transition: filter 0.5s ease;
+        z-index: 2;
+    }
+
+    .menu-bar {
+        position: absolute !important;
+        border-radius: 5px;
+        border: 1px solid rgba(236, 26, 138, 0.555);
+        background: #fff;
+        z-index: 1;
+        padding: 10px !important;
+        /* display: none; Initially hide the element */
     }
 }

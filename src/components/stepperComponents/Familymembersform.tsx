@@ -1,17 +1,16 @@
 import React from 'react';
 import Stepper from './Stepper';
+import Famdetails from '../FamilyDetailsPage/FamilyDetails';
 
-const Stepper4: React.FC = () => {
+const Stepper3: React.FC = () => {
   return (
     <>
       <div className='container-fluid background-div'>
         <Stepper />
-        <div>
-          hello
-        </div>
+        <Famdetails />
       </div>
     </>
   );
 };
 
-export default Stepper4;
+export default Stepper3;

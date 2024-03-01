@@ -4,7 +4,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 70vh;
     margin: 0%;
     padding: 0%;
     font-family: 'Poppins', sans-serif;
@@ -24,16 +23,17 @@
 .details-container {
     display: flex;
     width: 75%;
-    height: fit-content;
+    min-height: fit-content;
     flex-wrap: wrap;
     background-color: #FFF;
     border-radius: 10px;
-    align-items: center;
+    align-items: baseline;
     justify-content: center;
     box-shadow: 0px 10px 30px 0px rgba(231, 52, 147, 0.25);
     padding-right: 30px;
     padding-left: 30px;
     padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 .fam-names {
@@ -41,10 +41,9 @@
     flex: 1;
     flex-direction: column;
     align-items: flex-start;
-    padding-left: 3%;
-    height: 80%;
     border-right: 1px solid black;
-    padding-right: 2%;
+    padding-right: 10px;
+    max-height: 310px;
     overflow-y: scroll;
 }
 
@@ -67,8 +66,7 @@
     border-radius: 5px;
     color: #FFF;
     padding: 5px;
-    height: 50px;
-    width: 150px;
+    min-width: 140px;
     text-align: left;
     padding-left: 20px;
 }
@@ -76,7 +74,6 @@
 .fam-details {
     display: flex;
     flex: 6;
-    height: 90%;
     width: 100%;
     flex-direction: column;
     margin-right: 10px;
@@ -270,9 +267,7 @@
 }
 
 .form-button {
-    height: fit-content;
-    min-height: 40px;
-    width: 18%;
+    padding: 8px 25px;
     color: #FFF;
     text-align: center;
     font-size: 18px;
@@ -286,4 +281,25 @@
 
 .activecls:active {
     background-color: #36256E;
+}
+
+@media screen and (max-width:576px) {
+
+    .fam-row1,
+    .fam-row2,
+    .form-name,
+    .form-gender,
+    .form-age,
+    .form-email,
+    .form-med-condition,
+    .form-input-number,
+    .form-input-disease,
+    .form-number {
+        width: 100%;
+    }
+
+    .form-input-no {
+        width: 50%;
+    }
+
 }

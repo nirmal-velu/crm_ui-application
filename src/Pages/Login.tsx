@@ -10,8 +10,6 @@ import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 
 
-
-
 interface Props { }
 
 const Login: React.FC<Props> = () => {
@@ -130,7 +128,7 @@ const Login: React.FC<Props> = () => {
                 <div className='left-container'>
                     <form onSubmit={handleSubmit}>
                         <div className='login-page-div mt-xxl-2'>
-                            <img className='insurance-log-img' src={insurance} alt='insurance' /><span style={{ color: "#36256E" }} className='insurance-txt'>Insurance Company</span>
+                            <img className='insurance-log-img' src={insurance} alt='Logo' /><span style={{ color: "#36256E" }} className='insurance-txt'>Insurance Company</span>
                         </div>
 
                         <div className='login-border'>
@@ -194,7 +192,7 @@ const Login: React.FC<Props> = () => {
 
                 </div>
 
-                <div className='right-container background-div'>
+                <div className='right-container background-color'>
                     <Snackbar
                         open={error || successMessage !== null}
                         autoHideDuration={3000}
@@ -219,7 +217,7 @@ const Login: React.FC<Props> = () => {
                         </div>
                     </div>
                     <div className='phone-img-div'>
-                        <img src={mobileimg} id='phone-img' />
+                        <img src={mobileimg} id='phone-img' alt='Image' />
                     </div>
 
                 </div>

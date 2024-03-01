@@ -5,6 +5,7 @@ import login from '../assets/login-logo.png';
 import alert from '../assets/alert.svg';
 import support from '../assets/support-img.png';
 import healthlogo from '../assets/health.svg';
+import { useNavigate } from 'react-router-dom';
 
 interface PolicyDetailsProps {
     policyName: string;
@@ -19,11 +20,18 @@ interface AlertProps {
 }
 
 const Policy: React.FC<PolicyDetailsProps> = ({ policyName, policyID, validTill }) => {
+
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/navbar')
+    }
+
     return (
         <div className='policy-details'>
             <div className='policy-details-box1'>
                 <div className='policy-box1-logo'>
-                    <img className='policy-box1-img' src={healthlogo} />
+                    <img className='policy-box1-img' src={healthlogo} alt='Insurance' />
                 </div>
                 <div className='policy-box1-details'>
                     <p className='policy-box1-tit-text'>{policyName}</p>
@@ -32,7 +40,7 @@ const Policy: React.FC<PolicyDetailsProps> = ({ policyName, policyID, validTill 
                 </div>
             </div>
             <div className='policy-details-box2'>
-                <button className='policy-box2-btn1'>View Details</button>
+                <button className='policy-box2-btn1' onClick={handleClick}>View Details</button>
                 <button className='policy-box2-btn2'>Claim Request</button>
             </div>
         </div>
@@ -55,7 +63,7 @@ const generateAlert = (policies: AlertProps[]): JSX.Element[] => {
                 <div className='policy-alert' key={index}>
                     <div className='alert-details'>
                         <div className='alert-img'>
-                            <img src={alert} />
+                            <img src={alert} alt='Alert-icon' />
                         </div>
                         <div className='alert-text'>
                             <p>Your policy <span className='alert-text-bold'>{policy.name}</span> expires in <span className='alert-text-bold'>{daysDiff}</span>  days. Please renew immediately.</p>
@@ -73,7 +81,7 @@ const generateAlert = (policies: AlertProps[]): JSX.Element[] => {
                 <div className='policy-alert' key={index}>
                     <div className='alert-details'>
                         <div className='alert-img'>
-                            <img src={alert} />
+                            <img src={alert} alt='Alert-icon' />
                         </div>
                         <div className='alert-text'>
                             <p>Your policy <span className='alert-text-bold'>{policy.name}</span> has expired. Please renew it to ensure continuous coverage.</p>
@@ -96,6 +104,9 @@ const generateAlert = (policies: AlertProps[]): JSX.Element[] => {
 
 const PolicyDetails = () => {
 
+    const navigate = useNavigate();
+    const handleLogin = () => navigate('/login');
+
     const policies: AlertProps[] = [
         { name: 'Policy 1', id: '1234567890', validTill: '01-Apr-2024 , 23:59' },
         { name: 'Policy 2', id: '0987654321', validTill: '02-Feb-2024 , 23:59' },
@@ -107,12 +118,12 @@ const PolicyDetails = () => {
         <div className='policy'>
             <div className='policy-header'>
                 <div className='policy-title'>
-                    <img src={insurance} width="38" height="45" className='logo'></img>
+                    <img src={insurance} alt='Logo' width="38" height="45" className='logo'></img>
                     <p>Insurance Company</p>
                 </div>
-                <div className='login-logo'>
+                <div className='login-logo' onClick={handleLogin}>
                     <p>Login</p>
-                    <img src={login} width="15" height="25" className='logo'></img>
+                    <img src={login} width="15" height="25" className='logo' alt='Login-Icon'></img>
                 </div>
             </div>
             <div className='policy-alert-container'>
@@ -131,7 +142,7 @@ const PolicyDetails = () => {
                 </div>
                 <div className='policy-support'>
                     <div className='img-box'>
-                        <img src={support} className='policy-support-img' />
+                        <img src={support} alt='Support' className='policy-support-img' />
                         <div className='img-text'>
                             <p className='img-text1'>24/7 Support</p>
                             <p className='img-text2'>1800 200 3030</p>

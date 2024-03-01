@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
-import tick from '../assets/Group (3).svg'
-import Add from '../assets/plus.png'
-import minus from '../assets/minus.png'
+import tick from '../../assets/Group (3).svg'
+import Add from '../../assets/plus.png'
+import minus from '../../assets/minus.png'
 import Stepper from './Stepper';
-import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../App';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { UserContext } from '../../App';
 
 
 interface Stepper1Props {
@@ -16,42 +16,62 @@ interface FormData {
     self: any;
     spouse: any;
     children: number;
-    ageOfElderParent: number;
-    ageOfElderParentInLaw: number;
-    ageOfElder: number;
+    // familyMembers: string;
+    ageOfElderParent: number | null;
+    ageOfElderParentInLaw: number | null;
+    ageOfElder: number | null;
     parents: number;
-    phoneNumber: number;
+    phoneNumber: number | null;
     parentInLaws: number;
 }
 
-const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
+const Stepper1: React.FC<Stepper1Props> = () => {
 
-    const [self, setSelf] = useState(true);
     const [condition, setCondition] = useState(true);
     const [lawscondition, setLawsCondition] = useState(true);
     const [children, setChildren] = useState(true)
-    const [count, setCount] = useState(0);
-    const [count1, setCount1] = useState(0);
-    const [count2, setCount2] = useState(0);
-    const [spouse, setSpouse] = useState(true);
+    const state = useContext(UserContext)
+    const location = useLocation()
     const navigate = useNavigate();
-    const state = useContext(UserContext);
-    const [formData, setFormData] = useState<FormData>({
+    const getDefaultFormData = () => ({
         self: false,
         spouse: false,
-        children: count,
-        // familyMembers: '',
-        ageOfElder: 0,
-        ageOfElderParent: 0,
-        ageOfElderParentInLaw: 0,
-        parents: count1,
-        parentInLaws: count2,
-        phoneNumber: 0,
+        children: 0,
+        ageOfElder: null,
+        ageOfElderParent: null,
+        ageOfElderParentInLaw: null,
+        parents: 0,
+        parentInLaws: 0,
+        phoneNumber: null,
     });
 
+
+    const [formData, setFormData] = useState<FormData>(() => {
+        const storedFormData = localStorage.getItem('formData');
+        return storedFormData ? JSON.parse(storedFormData) : getDefaultFormData();
+    });
+    const formDataString = JSON.stringify(formData);
+    localStorage.setItem('formData', formDataString);
+
     useEffect(() => {
-        console.log('Refreshing data:', count, count1, count2, formData);
-    }, [formData]);
+        const handleBeforeUnload = () => {
+            localStorage.removeItem('formData');
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, []);
+
+
+
+    const currentStep = location.state ? location.state.currentStep : 0;
+
+    useEffect(() => {
+        console.log('Refreshing data:', formData);
+    }, [formData]); // Only re-run the effect if count or formData changes
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -63,19 +83,18 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
     };
 
     const handlechildren = (operation: 'add' | 'remove') => {
-        // setChildren(false)
         if (operation === 'add') {
-            setCount((prevCount) => prevCount + 1);
+            // setCount((prevCount) => prevCount + 1);
             setFormData((prevFormData) => ({
                 ...prevFormData,
-                children: count + 1,
+                children: formData.children + 1,
             }));
             console.log(formData)
-        } else if (operation === 'remove' && count > 0) {
-            setCount((prevCount) => prevCount - 1);
+        } else if (operation === 'remove' && formData.children > 0) {
+            // setCount((prevCount) => prevCount - 1);
             setFormData({
                 ...formData,
-                children: count - 1,
+                children: formData.children - 1,
             });
             console.log(formData)
 
@@ -84,62 +103,42 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
 
     const handleButtonClick = (operation: 'add' | 'remove') => {
         if (operation === 'add') {
-            setCount1((prevCount) => prevCount + 1);
+            // setCount1((prevCount) => prevCount + 1);
             setFormData((prevFormData) => ({
                 ...prevFormData,
-                parents: count1 + 1,
+                parents: formData.parents + 1,
             }));
-        } else if (operation === 'remove' && count1 > 0) {
-            setCount1((prevCount) => prevCount - 1);
+        } else if (operation === 'remove' && formData.parents > 0) {
+            // setCount1((prevCount) => prevCount - 1);
             setFormData({
                 ...formData,
-                parents: count1 - 1,
+                parents: formData.parents - 1,
             });
         }
     };
 
     const handleButton = (operation: 'add' | 'remove') => {
         if (operation === 'add') {
-            setCount2((prevCount) => prevCount + 1);
+            // setCount2((prevCount) => prevCount + 1);
             setFormData((prevFormData) => ({
                 ...prevFormData,
-                parentInLaws: count2 + 1,
+                parentInLaws: formData.parentInLaws + 1,
             }));
-        } else if (operation === 'remove' && count2 > 0) {
-            setCount2((prevCount) => prevCount - 1);
+        } else if (operation === 'remove' && formData.parentInLaws > 0) {
+            // setCount2((prevCount) => prevCount - 1);
             setFormData({
                 ...formData,
-                parentInLaws: count2 - 1,
+                parentInLaws: formData.parentInLaws - 1,
             });
         }
     };
 
-    const handleNestedChange = (
-        e: React.ChangeEvent<HTMLInputElement>,
-        category: keyof FormData,
-        index: number
-    ) => {
-        const { value } = e.target;
-        setFormData((prevState) => {
-            const updatedCategory = [...(prevState[category] || [])]
-            if (value === '') {
-                updatedCategory.splice(index, 1);
-            } else {
-                const numericValue = parseInt(value, 10);
-                updatedCategory[index] = isNaN(numericValue) ? null : numericValue;
-            }
-            return {
-                ...prevState,
-                [category]: updatedCategory,
-            };
-        });
-    };
+    const selfTag = (value: any) => {
 
-    const selfTag = (state: boolean) => {
-        setSelf(state)
+        console.log(value + "self tag")
         setFormData({
             ...formData,
-            self: self,
+            self: value,
         })
     }
 
@@ -148,23 +147,20 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
             ...formData,
             spouse: true,
         });
-        setSpouse(false);
     }
     const handlespouseRemove = () => {
         setFormData({
             ...formData,
             spouse: false,
         });
-        setSpouse(true);
     }
-
 
     const generateInputFields = (category: keyof FormData, count: number) => {
         const inputFields: JSX.Element[] = [];
         if (count >= 1) {
             for (let i = 0; i < 1; i++) {
                 inputFields.push(
-                    <li key={i} className='d-flex mx-3 mb-3 justify-content-between'>
+                    <li key={i} className='d-flex mx-3 mb-3  justify-content-between'>
                         <div className=' list-parent'>Age of the elder parent</div>
                         <input
                             className='form-control ms-5'
@@ -174,7 +170,7 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
                             id={`${category}[${i}]`}
                             value={formData[category] || ''}
                             onChange={(e) => handleNestedChange(e, category, i)}
-                            required
+                        // required
                         />
                     </li>
                 );
@@ -184,7 +180,7 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
         return inputFields;
     };
 
-    const generateParentInLaw = (category: keyof FormData, count: number) => {
+    const generateParentInLaw = (category: keyof FormData, count2: number) => {
         const parentinlaw: JSX.Element[] = [];
         if (count2 >= 1) {
             for (let i = 0; i < 1; i++) {
@@ -207,14 +203,31 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
         }
         return parentinlaw;
     };
+    const handleNestedChange = (
+        e: React.ChangeEvent<HTMLInputElement>,
+        category: keyof FormData,
+        index: number
+    ) => {
+        const { value } = e.target;
+        const numericValue = parseInt(value, 10);
+        setFormData((prevState) => ({
+            ...prevState,
+            [category]: isNaN(numericValue) ? null : numericValue,
+        }));
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const updatedFormData: FormData = {
             ...formData
         };
-        state.setS1state('false');
-        navigate('/steppermobile', { state: { formData } });
+
+        setFormData(updatedFormData);
+        localStorage.setItem('formData', JSON.stringify(updatedFormData));
+        console.log(updatedFormData + "this is  the updated form data");
+        state.setS1state('false')
+        state.setColorStep(0);
+        navigate('/steppermobile', { state: { formData, currentStep } });
     }
 
     return (
@@ -231,25 +244,24 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
                                 <div className='txt-design'>
                                     self
                                 </div>
-                                {self ? (<div className='tick-checkbox mb-1' onClick={() => selfTag(false)}></div>) : (<img src={tick} onClick={() => selfTag(true)} className='img mb-1' />)}
+                                {formData.self ? (<img src={tick} onClick={() => selfTag(false)} className='img mb-1' />) : (<div className='tick-checkbox mb-1' onClick={() => selfTag(true)}></div>)}
                             </div>
                             <div className='d-flex mx-3 mb-3 justify-content-between'>
                                 <label htmlFor='spouse' className='txt-design'>spouse</label>
-                                {spouse ? (<span className='add-txt' onClick={handlespouseAdd}>Add</span>)
-                                    : (<span className='remove-txt' onClick={handlespouseRemove}>Remove</span>)}
+                                {formData.spouse ? (<span className='remove-txt' onClick={handlespouseRemove}>Remove</span>) : (<span className='add-txt' onClick={handlespouseAdd}>Add</span>)}
                             </div>
                             <div className='d-flex mx-3 mb-3 justify-content-between'>
                                 <label htmlFor='children' className='txt-design'>children</label>
                                 {children ? (
                                     <div>
-                                        {count === 0 ? (
+                                        {formData.children === 0 ? (
                                             <div className='add-txt' onClick={() => handlechildren('add')}>
                                                 Add
                                             </div>
                                         ) : (
                                             <div>
                                                 <img onClick={() => handlechildren('remove')} src={minus} className='add-img pe1' />
-                                                <span className=''>{` ${count.toString().padStart(2, '0')} `}</span>
+                                                <span className=''>{` ${formData.children.toString().padStart(2, '0')} `}</span>
                                                 <img onClick={() => handlechildren('add')} src={Add} className='add-img' />
                                             </div>
                                         )}
@@ -273,11 +285,11 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
                                 <label htmlFor="parents" className='txt-design'>parents</label>
                                 {condition ? (
                                     <div>
-                                        {count1 === 0 ? (
+                                        {formData.parents === 0 ? (
                                             <div className='add-txt' onClick={() => handleButtonClick('add')}>Add</div>
                                         ) : (
                                             <> <img onClick={() => handleButtonClick('remove')} src={minus} className='add-img pe1' />
-                                                <span className=''>{` ${count1.toString().padStart(2, '0')} `}</span>
+                                                <span className=''>{` ${formData.parents.toString().padStart(2, '0')} `}</span>
                                                 <img onClick={() => handleButtonClick('add')} src={Add} className='add-img' />
                                             </>
                                         )}
@@ -289,12 +301,12 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
                                 {lawscondition ?
                                     (
                                         <div>
-                                            {count2 === 0 ? (
+                                            {formData.parentInLaws === 0 ? (
                                                 <div className='add-txt' onClick={() => handleButton('add')}>Add</div>
                                             ) :
                                                 (<div>
                                                     <img onClick={() => handleButton('remove')} src={minus} className='add-img pe1' />
-                                                    <span className=''>{` ${count2.toString().padStart(2, '0')} `}</span>
+                                                    <span className=''>{` ${formData.parentInLaws.toString().padStart(2, '0')} `}</span>
                                                     <img onClick={() => handleButton('add')} src={Add} className='add-img' />
 
                                                 </div>
@@ -302,9 +314,9 @@ const Stepper1: React.FC<Stepper1Props> = ({ onPrev, onNext }) => {
                                         </div>
                                     ) : null}
                             </div>
-                            <div>{generateInputFields('ageOfElderParent', count1)}</div>
+                            <div>{generateInputFields('ageOfElderParent', formData.parents)}</div>
                             <div>
-                                {generateParentInLaw("ageOfElderParentInLaw", count2)}
+                                {generateParentInLaw("ageOfElderParentInLaw", formData.parentInLaws)}
                             </div>
                             <div className='d-flex justify-content-center quote-div'>
                                 <button type="submit" className='quote'>Get Quote</button>

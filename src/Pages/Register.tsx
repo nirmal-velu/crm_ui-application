@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import '../css/Register.css'
 import axios from 'axios'
-import insurance from '../assets/insuranceLogo.svg';
+import insurance from '../assets/insurance.svg';
 import mobileimg from '../assets/mobileLogo.svg'
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
+
+    // const navigate = useNavigate();
 
     const initvalues = {
         "fullName": "",
@@ -98,6 +101,7 @@ function Register() {
                     "createdOn": "2023-11-29T09:20:21.707Z",
                     "createdBy": "string"
                 })
+                // navigate('/dashboard');
             }
         }
         catch (error) {
@@ -113,7 +117,7 @@ function Register() {
             <div className='container1'>
                 <div className='first-section'>
                     <div className='header'>
-                        <img src={insurance} width="38" height="45"></img>
+                        <img src={insurance} alt='Logo' width="38" height="45"></img>
                         <h1>Insurance Company</h1>
                     </div>
                     <div className='reg-form'>
@@ -242,7 +246,7 @@ function Register() {
                         <h3>Hassle-free claims</h3>
                     </div>
                     <div className='image1'>
-                        <img src={mobileimg} width="350" height="250" ></img>
+                        <img src={mobileimg} alt='Image' width="350" height="250" ></img>
                     </div>
                 </div>
             </div>

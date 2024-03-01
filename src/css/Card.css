@@ -1,0 +1,86 @@
+.cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    background-color: #F0F0F0;
+    border-radius: 10px;
+    width: 28%;
+    min-width: 300px;
+    max-width: 400px;
+    height: 200px;
+    min-height: fit-content;
+    padding: 10px;
+    box-sizing: border-box;
+    color: #36256E;
+    margin: 20px;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.card-section1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 5px;
+    width: 20%;
+    height: 95%;
+    border-right: 1px solid #36256E;
+}
+
+.card-section2 {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.card-section2-div1,
+.card-section2-div2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-details-name,
+.card-details-age,
+.card-details-id,
+.card-details-valid {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-details-label {
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.card-details-value {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+@media screen and (max-width:576px) {
+    .card-container {
+        margin: 10px !important;
+    }
+}

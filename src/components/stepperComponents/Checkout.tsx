@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
-import time from '../assets/waiting-period.svg'
-import search from '../assets/quick-evaluation.svg'
-import approved from '../assets/approval.svg'
+import time from '../../assets/waiting-period.svg';
+import search from '../../assets/quick-evaluation.svg';
+import approved from '../../assets/approval.svg';
 import Stepper from './Stepper';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
-import { UserContext } from '../App';
+import { UserContext } from '../../App';
 
 const Stepper2: React.FC = () => {
   const [sliderValue, setSliderValue] = useState<number>(0);
   const state = useContext(UserContext)
-  const [transitionDirection, setTransitionDirection] = useState<'up' | 'down' | null>(null);
+  // const [transitionDirection, setTransitionDirection] = useState<'up' | 'down' | null>(null);
   const navigate = useNavigate()
 
   const standard: number = 1143;
