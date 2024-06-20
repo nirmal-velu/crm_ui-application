@@ -10,6 +10,7 @@ import travellogo from '../assets/Group (3).png'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../App'
+import InsuranceCoverage from './InsuranceCoverage'
 
 
 interface LandingPageProps { }
@@ -34,7 +35,7 @@ const LandingPage: React.FC<LandingPageProps> = () => {
         <>
             <div className='container-fluid linear'>
                 <div className='upper-div'>
-                    <div className='ins-log-div'>
+                    {/* <div className='ins-log-div'>
                         <div className='insurance-div'>
                             <img className='insurance-img' src={insurance} /><span className='insurance-txt'>Insurance Company</span>
                         </div>
@@ -43,7 +44,8 @@ const LandingPage: React.FC<LandingPageProps> = () => {
                             <span className='login-txt' onClick={handleLogin}>Login</span> <img className='login-img' onClick={handleLogin} src={login} />
 
                         </div>
-                    </div>
+                    </div> */}
+                    <InsuranceCoverage />
 
                     <div className='total-container-div'>
                         <div className='ins-cont-div'>

@@ -14,8 +14,8 @@
 
 .policy-header {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     height: 15%;
     background-color: #36256E;
     margin-top: 10px;
@@ -29,18 +29,16 @@
 
 .policy-title {
     display: flex;
-    flex-direction: row;
-    align-items: stretch;
+    align-items: center;
     padding: 20px;
     gap: 10px;
 }
 
 .login-logo {
     display: flex;
-    flex-direction: row;
     padding: 20px;
     gap: 10px;
-    align-items: stretch;
+    /* align-items: stretch; */
 }
 
 .login-logo p {
@@ -119,7 +117,7 @@
     margin-left: 5%;
     margin-right: 5%;
     height: 65%;
-    margin-bottom: 1%;
+    margin-bottom: 20px;
 }
 
 .policy-data {
@@ -145,7 +143,7 @@
 
 .policy-details-box1 {
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
     /* height: 80%; */
     justify-content: center;
     align-items: center;
@@ -281,7 +279,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 2%;
+    margin-bottom: 20px;
     margin-top: auto;
 }
 
@@ -292,4 +290,20 @@
     font-size: 12px;
     font-weight: 400;
     text-decoration: none;
+}
+
+@media screen and (max-width: 576px) {
+    .policy-header p {
+        font-size: 16px;
+    }
+
+    .login-logo p {
+        font-size: 14px;
+    }
+
+    .policy-box2-btn1,
+    .policy-box2-btn2 {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
 }

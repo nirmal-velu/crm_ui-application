@@ -232,7 +232,7 @@ const Stepper1: React.FC<Stepper1Props> = () => {
 
     return (
         <>
-            <div className='container-fluid background-div'>
+            <div className=' d-flex container-fluid background-div flex-column'>
                 <Stepper />
                 <form onSubmit={handleSubmit} >
                     <div className='familyMembers d-flex justify-content-center  p-3 pb-5  pt-xxl-4'>
@@ -323,15 +323,14 @@ const Stepper1: React.FC<Stepper1Props> = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='d-flex justify-content-center p-4 pt-xxl-4'>
-                        <footer className='d-flex footer-div mt-xxl-3' >
-                            <a ><pre > About Us  |</pre></a>
-                            <a> <pre>  Terms & Conditions |</pre></a>
-                            <a><pre>  Privacy Policy</pre></a>
-                        </footer>
-                    </div>
                 </form >
-
+                <div className='d-flex justify-content-center p-4 pt-xxl-4 mt-auto'>
+                    <footer className='d-flex footer-div mt-xxl-3' >
+                        <a ><pre > About Us  |</pre></a>
+                        <a> <pre>  Terms & Conditions |</pre></a>
+                        <a><pre>  Privacy Policy</pre></a>
+                    </footer>
+                </div>
             </div>
         </>
     );

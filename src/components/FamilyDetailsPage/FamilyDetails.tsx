@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 
 const Famdetails = () => {
 
+    const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+
     const [curstate, setCurrentstate] = useState(0); //form change
 
     const datas = ["you", "spouse", "child1", "child2", "parent1", "parent2", "parentInLaw1", "parentInLaw2"] //members
@@ -66,7 +68,7 @@ const Famdetails = () => {
                 // console.log(Finishedicon)
                 try {
                     console.log("no error added")
-                    const response = await axios.post('http://10.54.7.80:1301/api/getQuote/getQuote/details', formData);
+                    const response = await axios.post(apiBaseUrl + '/getQuote/getQuote/details', formData);
                     console.log(response.data.message);
                     console.log("data added");
                     setFormData({});

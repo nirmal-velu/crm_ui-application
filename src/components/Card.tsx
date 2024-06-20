@@ -3,13 +3,13 @@ import insurance from '../assets/insurance.svg';
 import download from '../assets/download.svg';
 
 interface Cardprops {
-    key: number;
+    // key: number;
     name: string;
     id: string;
     validTill: string;
 }
 
-const Card: React.FC<Cardprops> = ({ key, name, id, validTill, }) => {
+const Card: React.FC<Cardprops> = ({ name, id, validTill, }) => {
 
     const handleClick = () => {
         const card = document.getElementsByClassName('card-container');

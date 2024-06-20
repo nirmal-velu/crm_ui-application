@@ -50,14 +50,42 @@ export default function NetworkHospitals({ isNavCollapsed }: Props) {
     };
 
     const renderState = () => {
-        return datalist.map((item, index) => (
-            <option className='text-center' key={index}>{item.state}</option>
+
+        const uniquevalue = (Search: any[]) => {
+            let value: any[] = [];
+            Search.forEach((item) => {
+                if (!value.includes(item.state)) {
+                    value.push(item.state);
+                }
+            })
+
+            return value;
+        }
+
+        const state = uniquevalue(datalist);
+
+        return state.map((item, index) => (
+            <option className='text-center' key={index}>{item}</option>
         ))
     }
 
     const renderDistrict = () => {
-        return datalist.map((item, index) => (
-            <option className='text-center' key={index}>{item.district}</option>
+
+        const uniquevalue = (Search: any[]) => {
+            let value: any[] = [];
+            Search.forEach((item) => {
+                if (!value.includes(item.district)) {
+                    value.push(item.district);
+                }
+            })
+
+            return value;
+        }
+
+        const district = uniquevalue(StateList);
+
+        return district.map((item, index) => (
+            <option className='text-center' key={index}>{item}</option>
         ))
     }
 

@@ -4,6 +4,7 @@ import insurance from '../../assets/insuranceLogo.svg'
 import login from '../../assets/login-logo.png'
 import { Link, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../../App";
+import InsuranceCoverage from "../../Pages/InsuranceCoverage";
 
 
 
@@ -132,14 +133,15 @@ const Stepper: React.FC<StepperProps> = () => {
   return (
     <>
       <div className={`container-fluid stepper ${formSubmitted ? 'form-submitted-bg' : ''}`}>
-        <div className="row d-flex p-2 justify-content-between align-items-center mt-xxl-3" >
+        {/* <div className="row d-flex p-2 justify-content-between align-items-center mt-xxl-3" >
           <div className="col-auto ms-2">
             <img className='me-3' src={insurance} alt="Logo" /><span className='insurance-txt'>Insurance Company</span>
           </div>
           <div className="col-auto me-2">
             <span className='login-txt' onClick={handleLogin}>Login</span> <img className='login-img' src={login} alt="Icon" onClick={handleLogin} />
           </div>
-        </div>
+        </div> */}
+        <InsuranceCoverage />
         <div className="steps-container pt-4 mt-xxl-5">
           <div className="steps-wrapper progress-line">{steps}</div>
         </div>

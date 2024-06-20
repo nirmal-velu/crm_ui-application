@@ -23,7 +23,7 @@
     flex-direction: column;
     flex: 4;
     background-color: #36256E;
-    justify-content: end;
+    /* justify-content: end; */
 }
 
 
@@ -74,7 +74,6 @@
     text-align: center;
     font-size: 24px;
     font-weight: 600;
-    line-height: 36px;
 }
 
 .subtitle {
@@ -84,7 +83,6 @@
     margin-top: 5px;
     margin-bottom: 20px;
     font-weight: 400;
-    line-height: 21px;
 }
 
 .reg-form input {
@@ -107,6 +105,7 @@ input::placeholder {
 }
 
 #success {
+    font-size: 14px;
     color: rgb(103, 225, 103);
     text-align: center;
     margin: 5px;
@@ -134,6 +133,7 @@ input::placeholder {
 
 .image1 {
     display: flex;
+    flex: 1;
     width: 100%;
     align-items: end;
     justify-content: flex-end;
@@ -143,18 +143,37 @@ input::placeholder {
 }
 
 .ss-text {
-    width: 100%;
+    width: 80%;
     gap: 40px;
-    margin-bottom: 80px;
     color: #FFFFFF;
     display: flex;
     flex-direction: column;
     align-content: center;
     flex-wrap: wrap;
+    flex: 1;
+    justify-content: end;
 }
 
 .ss-text h3 {
     font-weight: 500;
     font-size: 24px;
     margin: 0px;
+}
+
+@media screen and (max-width:576px) {
+    .second-section {
+        display: none;
+    }
+
+    .first-section {
+        flex: 1;
+    }
+
+    .header h1 {
+        font-size: 20px;
+    }
+
+    .ins-title {
+        font-size: 20px;
+    }
 }

@@ -24,7 +24,8 @@ const Policy: React.FC<PolicyDetailsProps> = ({ policyName, policyID, validTill 
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate('/navbar')
+        navigate('/navbar', { state: { policyID } });
+        console.log(policyID);
     }
 
     return (

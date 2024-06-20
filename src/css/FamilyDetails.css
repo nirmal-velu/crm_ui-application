@@ -24,6 +24,7 @@
     display: flex;
     width: 75%;
     min-height: fit-content;
+    min-width: 250px;
     flex-wrap: wrap;
     background-color: #FFF;
     border-radius: 10px;
@@ -74,7 +75,7 @@
 .fam-details {
     display: flex;
     flex: 6;
-    width: 100%;
+    /* width: 100%; */
     flex-direction: column;
     margin-right: 10px;
     margin-left: 20px;
@@ -102,7 +103,7 @@
 
 .fam-row1 {
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
     flex-wrap: wrap;
     width: 100%;
     justify-content: space-between;
@@ -112,7 +113,7 @@
 
 .fam-row2 {
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
     flex-wrap: wrap;
     width: 100%;
     justify-content: space-between;

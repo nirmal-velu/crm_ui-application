@@ -88,7 +88,7 @@ function Register() {
             if (!Object.keys(validationError).length) {
                 setError({})
                 console.log("no error form added")
-                const response = await axios.post(apiBaseUrl + 'register/register', details);
+                const response = await axios.post(apiBaseUrl + '/register/register', details);
                 console.log(response.data.message);
                 setResult(response.data.message);
                 console.log("added");
@@ -113,7 +113,7 @@ function Register() {
 
 
     return (
-        <div className='register-screen'>
+        <>
             <div className='container1'>
                 <div className='first-section'>
                     <div className='header'>
@@ -122,7 +122,7 @@ function Register() {
                     </div>
                     <div className='reg-form'>
                         <form onSubmit={handlesubmit}>
-                            <div className='ins-title'><b>Create  a  Secure  Account</b></div>
+                            <div className='ins-title'>Create  a  Secure  Account</div>
                             <div className='subtitle'>Welcome to the future of insurance</div>
                             <div className='inputfield1'>
                                 <label>Full Name </label>
@@ -250,7 +250,7 @@ function Register() {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

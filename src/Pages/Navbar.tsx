@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import InsuranceCoverage from './InsuranceCoverage';
 import backArrow from '../assets/backarrow.svg'
 import menu from '../assets/menu-icon.png'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import NetworkHospitals from '../components/navbarComponents/NetworkHospital';
 import PaymentHistory from '../components/navbarComponents/PaymentHistory';
 import ProfileDetails from '../components/navbarComponents/ProfileDetails';
@@ -16,6 +16,12 @@ type Props = {};
 const Navbar = (props: Props) => {
 
   const navigate = useNavigate();
+
+  const location = useLocation();
+
+  const policyId = location.state && location.state.policyID;
+
+  console.log("policyID:", policyId);
 
   const [activeLink, setActiveLink] = useState(Number);
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
@@ -71,7 +77,7 @@ const Navbar = (props: Props) => {
 
   return (
     <>
-      <div className="container-fluid background-div">
+      <div className="container-fluid background-div d-flex flex-column">
         <InsuranceCoverage />
         <div className={`policy-contain mt-4 mt-xxl-5 mb-5 p-2`}>
           <div className='d-flex justify-content-between align-items-center'>
@@ -131,7 +137,7 @@ const Navbar = (props: Props) => {
           </nav>
           {renderedComponents()}
         </div>
-        <footer className='nav-footer'>
+        <footer className='nav-footer mb-3 mt-auto'>
           <a ><pre> About Us  |</pre></a>
           <a> <pre>  Terms & Conditions |</pre></a>
           <a><pre>  Privacy Policy</pre></a>

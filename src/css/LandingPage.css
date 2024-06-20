@@ -652,6 +652,7 @@ ul {
     color: #FFF;
     font-size: 24px;
     font-weight: 400;
+    margin-bottom: 20px;
 }
 
 .mob-num-container {
@@ -734,6 +735,7 @@ ul {
     color: #FFF;
     font-size: 24px;
     font-weight: 400;
+    margin-bottom: 20px;
 }
 
 .otp-container {
@@ -751,7 +753,7 @@ ul {
 
 .otp-back {
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
     align-items: baseline;
     gap: 8px;
     margin-bottom: 10px;
@@ -766,7 +768,7 @@ ul {
 
 .otp-text {
     color: #36256E;
-    display: flex;
+    /* display: flex; */
     margin-bottom: 20px;
     padding-left: 5px;
     font-size: 14px;
@@ -838,6 +840,7 @@ ul {
 .range-slider {
     -webkit-appearance: none;
     width: 30%;
+    min-width: 200px;
     height: 10px;
     border-radius: 5px;
     background: #fff;
@@ -1084,7 +1087,9 @@ ul {
 .policy-contain {
     width: 98%;
     position: relative;
-    height: 546px;
+    /* height: 546px; */
+    min-height: 546px;
+    max-height: 650px;
     border-radius: 10px;
     background-color: #FFF;
     margin: auto;
@@ -1407,6 +1412,10 @@ ul {
         width: 230px;
 
     }
+
+    .familyMembers {
+        font-size: 20px;
+    }
 }
 
 @media screen and (min-width:577px) and (max-width:768px) {
@@ -1471,6 +1480,19 @@ ul {
         width: 250px;
         margin-bottom: 10px;
     }
+
+    .range-slider {
+        width: 40%;
+    }
+
+    .policy-select-ckt {
+        font-size: 22px;
+    }
+
+    .proceed-button {
+        font-size: 14px;
+        margin: 5px;
+    }
 }
 
 /* ---------------------------------policy details and profile details component media query------------------------------------- */
@@ -1527,5 +1549,16 @@ ul {
         z-index: 1;
         padding: 10px !important;
         /* display: none; Initially hide the element */
+    }
+}
+
+/* -------------------------------------------------contact-details-mediaquery--------------------------------------------------------- */
+
+@media screen and (max-width: 576px) {
+
+    .mob-num-body-text,
+    .otp-body-text {
+        font-size: 20px;
+        margin-bottom: 10px;
     }
 }

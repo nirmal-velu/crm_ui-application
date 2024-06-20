@@ -11,6 +11,8 @@ const StepperMobile = () => {
     console.log(formData)
     console.log(currentStep)
 
+    const apiBaseurl = process.env.REACT_APP_API_BASE_URL;
+
     const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const num: number = parseInt(e.target.value);
         console.log('num', num)
@@ -21,7 +23,7 @@ const StepperMobile = () => {
 
     const handlesubmit = async (formData: any) => {
         try {
-            const response = await axios.post('http://localhost:1301/api/getQuote/generate', formData);
+            const response = await axios.post(apiBaseurl + '/getQuote/generate', formData);
             navigate('/stepperotp', { state: { currentStep } })
             console.log("response", response)
             console.log('Backend response:', response.data);
